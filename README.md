@@ -4,7 +4,7 @@
 
 AmplifyWorld helps businesses grow through strategic marketing, technology, branding, web development, SEO, GEO and AI automation. This repository is the planned production website for the agency.
 
-> **Development status:** Module 0 (planning and requirements). Modules 1–18 cover production implementation and deployment. This repository is not yet a functioning website.
+> **Development status:** **Modules 0–3 completed and merged into `main`**: project specification, working Next.js/Express monorepo, approved responsive design system, and asset production kit. **Modules 4–18 remain**. The application currently serves foundation pages; the cinematic designs and animations are not yet integrated into the production Next.js experience.
 
 ## Approved experience
 
@@ -46,7 +46,24 @@ AmplifyWorld helps businesses grow through strategic marketing, technology, bran
 
 No paid motion-generation platform is needed for the code-based animations. Motion must be performant on mobile and honor reduced-motion settings.
 
+## Development quick start
+
+Use Node.js 22 and pnpm 10.13.1. From the repository root:
+
+```sh
+corepack enable
+pnpm install --no-frozen-lockfile
+pnpm dev
+```
+
+The starter web app runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
+
+The independently reviewable design kit lives in [`design-assets/`](design-assets/README.md), with integrated developer instructions in [`docs/design/INTEGRATION_HANDOFF.md`](docs/design/INTEGRATION_HANDOFF.md). The large preview assets are not production page backgrounds.
+
 ## Project documents
+
+- [Modules 0–3 completion report](docs/MODULES_00_03_STATUS.md)
+- [Module 1 foundation report](docs/MODULE_01_REPORT.md)
 
 - [Module 0 specification](docs/MODULE_00_SPEC.md)
 - [Development roadmap (Modules 0–18)](docs/ROADMAP.md)
