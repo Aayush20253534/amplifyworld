@@ -39,4 +39,17 @@ No third-party analytics, invented business identity, fake page URLs or approval
 
 ### CI acceptance
 
-The feature branch must pass frozen dependency install, shared/API/web builds, Prisma validation, TypeScript, lint, Node unit tests, isolated PostgreSQL migrations and integration tests, and the full Chromium browser suite. The final merged `main` SHA must also be green. The corresponding run IDs and discovered fixes will be recorded once validated.
+**Accepted on GitHub.** [PR #15](https://github.com/ayush-jha-NIT/amplifyworld/pull/15) merged to `main` as [4f431d8](https://github.com/ayush-jha-NIT/amplifyworld/commit/4f431d8e893f9bbf737b6a2316ab5e790a6fa68a).
+
+[PR CI run #39470491943](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39470491943) passed:
+frozen dependency installation, Next/Express/shared production builds, Prisma validation, TypeScript, lint, all Node tests, isolated PostgreSQL 17 migration/integration tests, and **83 Chromium browser tests**. These include **42 responsive viewport captures** across seven routes, **14 axe route/viewport checks**, and functional keyboard, modal, carousel, Blog history, Contact, SEO, reduced-motion, navigation and reflow regressions.
+
+**[Download screenshot and geometry evidence from GitHub Actions](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39470491943/artifacts/12286762615)**. GitHub keeps this generated artifact for 14 days under the CI retention policy.
+
+### Issues caught and resolutions
+
+1. Four first-run route-matrix checks sampled transient Next.js streaming shells rather than the final page. Tests now wait for the settled single-heading page state before inspecting geometry, without dropping the heading invariant.
+2. A `html { zoom: 2 }` test artificially scaled post-layout content and did not emulate browser zoom's responsive breakpoint recalculation. Replaced with equivalent CSS-viewport reflow tests at 320 and 720 pixels. Real desktop/mobile browser zoom still requires manual follow-up.
+3. No horizontal overflow, broken first-viewport image, uncaught browser error or automated axe violation was reported in the **final passing suite**. Screenshot-to-design human comparison and physical-device QA are **still pending**, not claimed complete.
+
+**Final `main` CI status:** to be verified on the documentation commit, separately from the already green PR checks.
