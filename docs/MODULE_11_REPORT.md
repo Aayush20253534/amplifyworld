@@ -73,12 +73,12 @@ Local checks on 20 October 2026, Windows, Node 24.16.0 and pnpm 10.13.1:
 | `pnpm lint` | Passed with no ESLint errors or warnings |
 | `pnpm test` | 51 passed: 41 web, 9 API/database configuration/lifecycle, 1 shared |
 | Browser regression | All 9 Chromium tests passed, including accessibility, responsive layouts, no submission and existing routes |
-| Real PostgreSQL migration/contract tests | Pending GitHub CI; no local PostgreSQL/Docker is installed |
+| Real PostgreSQL migration/contract tests | Passed in isolated PostgreSQL 17 GitHub CI |
 
 The six configuration/lifecycle tests cover secret-safe failures, TLS and option
 validation, direct-URL requirements, protected authoring targets, lazy reuse,
 single disconnect, retry after construction failure and shutdown failure.
-The added API regression checks that all provisional public routes remain 404.
+The original Module 11 API regression checked that public routes were not enabled before Module 12; the subsequent Module 12 integration replaces this gate with real public API tests.
 
 The twelve database integration tests cover reference data, defaults, UUIDs,
 timestamps, uniqueness, publication/claim review gates, contact constraints,
@@ -86,9 +86,7 @@ notification state, retention, concurrent retry keys, foreign keys/deletion
 policy, ordered media, transaction rollback, SQL timestamp triggers, query
 indexes and runtime permission denials.
 
-Repository PR, implementation commit and green CI evidence will be recorded
-after the corresponding checks complete. Module acceptance remains pending
-those checks.
+**Module 11 accepted and merged:** [PR #10](https://github.com/ayush-jha-NIT/amplifyworld/pull/10), merge commit [e9bfb56](https://github.com/ayush-jha-NIT/amplifyworld/commit/e9bfb569669b3eeb176c92d896b0a3b9cd062f8e). [PR validation](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39429154499) and [main CI](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39429456808) both passed including isolated PostgreSQL and Chromium. Root failure of earlier database CI runs was an invalid require.resolve('prisma') executable lookup; corrected by invoking the workspace Prisma CLI through pnpm. Final diagnostic runner logs controlled stages only.
 
 ## Decisions and remaining integration
 
@@ -106,4 +104,4 @@ PostgreSQL integration proves the schema/client, not Neon network access or TLS
 against the eventual deployment. The owner still needs a Neon project/branch,
 verified region and backup policy, separate private migration/runtime URLs,
 restricted role grants and an intentional migration deployment following
-[DATABASE.md](DATABASE.md). Modules 12–18 remain.
+[DATABASE.md](DATABASE.md). Modules 12–18 are addressed sequentially; Module 12 was subsequently implemented.

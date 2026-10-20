@@ -4,11 +4,9 @@
 
 AmplifyWorld helps businesses grow through strategic marketing, technology, branding, web development, SEO, GEO and AI automation. This repository is the planned production website for the agency.
 
-> **Development status:** **Modules 0–10 implemented**: requirements, application foundation, design assets, navigation, cinematic homepage, About, interactive Portfolio, inline Blog reader and responsive Contact frontend. **Modules 11–18 remain.** Contact validates details locally; online inquiry submission is unavailable until storage, the API and notification/anti-abuse handling are implemented in Modules 11–13. WhatsApp remains unavailable unless a verified business number is configured.
+> **Development status:** **Modules 0–12 implemented and merged into `main`**: project requirements, production website, Contact form, Prisma/PostgreSQL schema and migrations, public Express content routes and database-backed inquiry receipts. **Modules 13–18 remain.** Contact submission is OFF by default until a verified Neon database, approved privacy/retention policy and deliberate server/web configuration are complete; Resend notifications and anti-abuse hardening remain Module 13.
 
-Module 11's database foundation is under acceptance review. See the
-[database bootstrap guide](docs/DATABASE.md) and [Module 11 report](docs/MODULE_11_REPORT.md).
-Neon has not been provisioned or deployed.
+Modules 11 and 12 passed PostgreSQL integration, application checks and browser regressions. The [database guide](docs/DATABASE.md) covers the operator-controlled Neon bootstrap. **No Neon instance or production deployment has been provisioned in this work.**
 
 ## Approved experience
 
@@ -16,7 +14,7 @@ Neon has not been provisioned or deployed.
 - **About**: uncluttered brand story, mission, vision, values and differentiators.
 - **Portfolio**: animated project carousel, category filters, interactive previews and detail views. Show only authorized projects and substantiated metrics.
 - **Blog**: articles, topic filters, search and **full inline article reading on the blog page**, not redirecting users to separate pages.
-- **Contact**: accessible inquiry form with local validation and honest availability messaging. Server validation, persistence and Resend notifications are pending Modules 11–13. Direct WhatsApp links require a configured, verified business number.
+- **Contact**: accessible inquiry form with local/server validation and a typed HTTP adapter for durable database receipts when both frontend and server are explicitly configured. Resend notifications are pending Module 13. Direct WhatsApp links require a configured, verified business number.
 
 ### Branding and contact CTAs
 
@@ -62,11 +60,13 @@ pnpm dev
 
 The frontend with homepage, About, Portfolio, inline Blog reader and Contact runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. After building, run `pnpm --filter @amplifyworld/web exec playwright install chromium` then `pnpm --filter @amplifyworld/web test:browser` for browser interaction, accessibility and responsive checks. CI runs both suites and saves browser screenshots. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`.
 
-The Contact form’s **Check Inquiry** action validates in this browser only. It makes no inquiry request, saves no draft and cannot claim receipt. `NEXT_PUBLIC_API_URL` does not enable submission: only `/health` currently exists. A real inquiry adapter, server validation, storage, anti-abuse, notification handling and reviewed privacy/retention copy are required before enabling collection. Configure `NEXT_PUBLIC_WHATSAPP_NUMBER` only with an owner-verified business number in international format; formatting validation does not itself verify ownership.
+The Contact form stays in **Check Inquiry** (local-only) mode by default. The Module 12 Express API implements `GET /api/v1/posts`, `/projects`, slug details, `/ready`, and `POST /api/v1/inquiries` with validated idempotent storage. To enable real collection, operators must first migrate a real Neon database and provide an approved privacy/retention policy, then deliberately configure `INQUIRY_COLLECTION_ENABLED=true`, `INQUIRY_PRIVACY_POLICY_APPROVED=true`, `INQUIRY_RETENTION_DAYS` (1–365), `DATABASE_URL`, `NEXT_PUBLIC_API_URL`, and `NEXT_PUBLIC_INQUIRIES_ENABLED=true`. **Receipt means stored, not emailed.** Resend notifications, distributed anti-abuse and live delivery tests are still pending. Configure `NEXT_PUBLIC_WHATSAPP_NUMBER` only with a verified business number.
 
 The independently reviewable design kit lives in [`design-assets/`](design-assets/README.md), with integrated developer instructions in [`docs/design/INTEGRATION_HANDOFF.md`](docs/design/INTEGRATION_HANDOFF.md). The large preview assets are not production page backgrounds.
 
 ## Project documents
+
+- [Module 12 API, inquiry contracts and safety gates](docs/MODULE_12_REPORT.md)
 
 - [Database setup, migrations, security and recovery](docs/DATABASE.md)
 - [Module 11 database foundation and validation](docs/MODULE_11_REPORT.md)

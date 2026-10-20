@@ -47,8 +47,7 @@ Module 11 implements these concepts in `apps/api/prisma/schema.prisma`, with
 versioned SQL migrations (including CHECK constraints and timestamp triggers)
 and a lazy Prisma 7 PostgreSQL client in `apps/api/src/db`. See
 [DATABASE.md](DATABASE.md) for the exact model contract, role grants, Neon
-bootstrap, migration/recovery workflow and isolated database tests. This is a
-storage foundation; no public API route or web fixture has been connected yet.
+bootstrap, migration/recovery workflow and isolated database tests. This is a storage foundation. Module 12 now implements the public API routes and an opt-in Contact adapter; published database posts/projects do not replace the frontend's disclosed editorial/design samples until the CMS/publishing phase.
 
 - **Project:** slug, name, description, services/categories, media, published flag, case-study content. Claim metrics may be published only after verification.
 - **Post:** slug, title, excerpt, body, cover image, category, author, timestamps, status, SEO metadata.
@@ -80,8 +79,14 @@ INQUIRY_NOTIFY_EMAIL=
 CLIENT_ORIGIN=
 PORT=
 
+INQUIRY_COLLECTION_ENABLED=false
+INQUIRY_PRIVACY_POLICY_APPROVED=false
+INQUIRY_RETENTION_DAYS=
+TRUST_PROXY_HOPS=0
+
 # Web - only non-secret values
 NEXT_PUBLIC_API_URL=
+NEXT_PUBLIC_INQUIRIES_ENABLED=false
 NEXT_PUBLIC_WHATSAPP_NUMBER=
 ```
 

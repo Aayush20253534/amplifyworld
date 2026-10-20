@@ -26,14 +26,7 @@
 
 ## Dependencies
 
-Module 11's database foundation is in acceptance review; see
-[its report](MODULE_11_REPORT.md) and [database guide](DATABASE.md). Neon has not
-been provisioned or deployed, and public inquiry submission remains unavailable.
-
-Current implementation: Modules 0–10. Module 10 delivers the Contact frontend with
-local validation and unavailable-submission messaging. Inquiry persistence, the
-public endpoint and email/anti-abuse remain in Modules 11–13; the frontend does
-not simulate their completion. See [Module 10 report](MODULE_10_REPORT.md) for validation evidence and integration gates.
+**Modules 0–12 are merged.** Module 11 provides the tested PostgreSQL/Prisma migration and database foundation. Module 12 adds published-content read APIs and idempotent, durable inquiry submission. Collection remains disabled until a real migrated Neon database and reviewed privacy/retention configuration are supplied. Module 13 will add Resend and distributed anti-abuse hardening. [Module 11](MODULE_11_REPORT.md) · [Module 12](MODULE_12_REPORT.md) · [Database guide](DATABASE.md).
 
 - M1 supplies web/API build foundation.
 - M2–M4 establish the reusable visual language and assets.

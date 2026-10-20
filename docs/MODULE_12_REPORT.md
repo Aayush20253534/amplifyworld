@@ -33,6 +33,10 @@ The client creates a UUID key and **reuses it for identical retry content**, rot
 - No admin API/auth, publishing, Resend keys, fake media or fabricated lead content is introduced. The frontend still shows original editorial/project samples marked as concepts and is not falsely claimed to be CMS-connected.
 - Production enablement also requires operator-approved retention/deletion job and privacy/legal language; storing an expiry timestamp alone does not implement deletion.
 
+## GitHub acceptance
+
+[PR #11](https://github.com/ayush-jha-NIT/amplifyworld/pull/11) was merged into `main` as [0c975f4](https://github.com/ayush-jha-NIT/amplifyworld/commit/0c975f46bc3252f632a74d12eebfab6d68e85d55). [PR CI #39431110932](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39431110932) passed dependency installation, shared/API/web builds, Prisma validation, TypeScript, lint, unit tests, isolated PostgreSQL migration and integration tests, and Chromium browser regression tests. Real Neon production delivery remains unverified.
+
 ## Next
 
 Module 13 implements server-only Resend dispatch, durable notification retry state, rate/spam hardening and human-safe failure modes.

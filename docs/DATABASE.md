@@ -1,9 +1,6 @@
 # Database foundation and bootstrap
 
-Module 11 provides a reproducible PostgreSQL schema, migrations, client and tests.
-It does **not** provision Neon, enable inquiry submission, send email, authenticate
-admins or replace the website's fixtures. `/health` remains a database-independent
-liveness check. Public endpoints arrive in Module 12.
+Module 11 provides a reproducible PostgreSQL schema, migrations, client and tests. Module 12 adds public read endpoints and a guarded durable inquiry API. This repository does **not** provision Neon, send email, authenticate admins or replace website editorial/portfolio samples. `/health` stays database-independent; `/api/v1/ready` probes configured database readiness. Inquiry collection is disabled by default and requires explicit privacy, retention, database and frontend activation.
 
 ## Supported toolchain
 
@@ -50,10 +47,7 @@ them. Do not replace migration history with `db push`.
 Module 10's `not-sure` service maps to `Inquiry.serviceId = null`. Optional blank
 phone/company values must become null; email must be trimmed and lowercased.
 The database enforces key contact lengths and basic syntax, but this is not the
-future HTTP validation policy. Module 12 must validate and normalize requests,
-require a UUID idempotency key plus SHA-256 hash of the normalized request, return
-conflict if a reused key has a different hash, and acknowledge only durable
-receipt. Nullable keys support controlled imports; they do not implement an
+future HTTP validation policy. Module 12 now validates and normalizes requests, requires a UUID idempotency key plus SHA-256 hash of the normalized request, returns a conflict for a changed retry key and acknowledges only durable receipt. Nullable keys support controlled imports; they do not implement an
 idempotent endpoint on their own.
 
 Module 13 must implement retries, queue ownership, rate/spam controls and Resend.
