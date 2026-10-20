@@ -4,7 +4,7 @@
 
 AmplifyWorld helps businesses grow through strategic marketing, technology, branding, web development, SEO, GEO and AI automation. This repository is the planned production website for the agency.
 
-> **Development status:** **Modules 0–3 completed and merged into `main`**: project specification, working Next.js/Express monorepo, approved responsive design system, and asset production kit. **Modules 4–18 remain**. The application currently serves foundation pages; the cinematic designs and animations are not yet integrated into the production Next.js experience.
+> **Development status:** **Modules 0–4 implemented and merged into `main`**: specification, working Next.js/Express monorepo, design system, original asset production kit and responsive global navigation/footer/page motion. **Modules 5–18 remain.** The full cinematic homepage and final page-specific experiences are not yet integrated.
 
 ## Approved experience
 
@@ -56,12 +56,13 @@ pnpm install --no-frozen-lockfile
 pnpm dev
 ```
 
-The starter web app runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
+The frontend with integrated Module 4 global branding runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
 
 The independently reviewable design kit lives in [`design-assets/`](design-assets/README.md), with integrated developer instructions in [`docs/design/INTEGRATION_HANDOFF.md`](docs/design/INTEGRATION_HANDOFF.md). The large preview assets are not production page backgrounds.
 
 ## Project documents
 
+- [Module 4 implementation report](docs/MODULE_04_REPORT.md)
 - [Modules 0–3 completion report](docs/MODULES_00_03_STATUS.md)
 - [Module 1 foundation report](docs/MODULE_01_REPORT.md)
 
