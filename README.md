@@ -4,7 +4,7 @@
 
 AmplifyWorld helps businesses grow through strategic marketing, technology, branding, web development, SEO, GEO and AI automation. This repository is the planned production website for the agency.
 
-> **Development status:** **Modules 0–16 merged and CI-verified**: public experience, database, public APIs, secure inquiry receipts and the opt-in Resend notification/anti-abuse workflow. **Modules 0–16 and Module 17 deployment-readiness code are CI-verified. Module 18 handover tooling is implemented in a PR under verification. Actual production launch is blocked on hosting authorization, migrations and service approvals.** No live Neon deployment, verified Resend sender or production message delivery is claimed.
+> **Development status:** **Modules 0–16 merged and CI-verified**: public experience, database, public APIs, secure inquiry receipts and the opt-in Resend notification/anti-abuse workflow. **All Modules 0–18 have merged repository deliverables and CI-verified implementation. Module 17's actual production deployment and Module 18's production acceptance are NOT complete due to hosting authorization, unapplied Neon migrations and pending operational approvals.** No live Neon deployment, verified Resend sender or production message delivery is claimed.
 
 Modules 11–13 passed PostgreSQL integration, application checks and browser regressions. The [database guide](docs/DATABASE.md) covers the operator-controlled Neon bootstrap. **No Neon instance or production deployment has been provisioned in this work.**
 

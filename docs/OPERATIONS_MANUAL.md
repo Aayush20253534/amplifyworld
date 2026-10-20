@@ -33,7 +33,7 @@
 | Public smoke | \`pnpm deployment:smoke\` | Read-only GETs to approved HTTPS targets |
 | Resend worker | \`pnpm notifications:dispatch\` | Only in explicitly scheduled, approved private worker |
 | Retention cleanup | \`pnpm retention:prune\` | Deletes expired data; approved schedule/policy required |
-| Release audit | \`pnpm release:audit -- preview docs/RELEASE_EVIDENCE_TEMPLATE.json\` | Must be **BLOCKED** with template evidence |
+| Release audit | \`pnpm release:audit preview docs/RELEASE_EVIDENCE_TEMPLATE.json\` | Must be **BLOCKED** with template evidence |
 
 The release audit profiles are \`preview\`, \`public-site\` and \`full-production\`. Copy the JSON template **outside the repository** into a private operations workspace, fill only validated status and HTTPS evidence URLs, then run the CLI. Any "passed" flag is an **operator claim**, not independent proof; inspect the target evidence manually, including that it matches the exact Git SHA. Never attach private database URLs, IDs revealing customer data or credentials.
 

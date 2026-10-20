@@ -25,6 +25,6 @@
 4. Apply reviewed Prisma migrations **only to the dedicated Neon** via a controlled schema-owner identity, configure restricted runtime role and verify \`/api/v1/ready\`.
 5. Run read-only \`deployment:smoke\`, check CORS and the code-derived noindex state. Conduct visual review on real phones.
 6. Obtain lawful privacy and retention approval and configure an actual cleanup schedule before activating inquiry collection. Configure a verified Resend sender/recipient, independently scheduled worker and authenticated admin identity as separately approved. Verify actual results and set monitoring/rollback.
-7. Fill a private copy of [release evidence template](RELEASE_EVIDENCE_TEMPLATE.json), verify every evidence link against the exact release SHA, then run \`pnpm release:audit -- full-production /path/to/evidence.json\`. The CLI reports only claimed status; human approval and live validation remain mandatory.
+7. Fill a private copy of [release evidence template](RELEASE_EVIDENCE_TEMPLATE.json), verify every evidence link against the exact release SHA, then run \`pnpm release:audit full-production /path/to/evidence.json\`. The CLI reports only claimed status; human approval and live validation remain mandatory.
 
 **No service or setting may be marked deployed, green or approved solely because code and documentation exist.** Never substitute Digimarket resources, a paid plan, invented domain or fabricated delivery data to close this checklist.

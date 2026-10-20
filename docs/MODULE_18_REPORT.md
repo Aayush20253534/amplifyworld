@@ -41,3 +41,10 @@ Potential unresolved product distinctions:
 5. **Production acceptance is explicitly withheld** until the live release decision in \`docs/RELEASE_DECISION.md\` changes after real verified actions.
 
 The project is **code-and-handover ready** after successful CI. The **complete production product** remains blocked by external permissions, migration and privacy/sender approval. Never describe Module 18 final release as successfully launched until those are resolved.
+
+## Repository acceptance recorded
+
+- [PR #17](https://github.com/ayush-jha-NIT/amplifyworld/pull/17) merged into `main` as [commit 1279f65](https://github.com/ayush-jha-NIT/amplifyworld/commit/1279f6574cba5ac659f0e4035710db18f47935c2).
+- [CI run #39480953289](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39480953289) passed frozen install, production Next/Express builds, Prisma schema validation, strict TypeScript, lint, all tests including new release-gate validation, disposable PostgreSQL 17 migrations/integration and the full Chromium cross-device suite.
+- The release evidence template remains **BLOCKED**. This outcome is intentional and safe while no authorized live Vercel/Render deployment exists.
+- The final documentation-only main commit must also pass CI before claiming final repository acceptance.
