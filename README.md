@@ -4,7 +4,7 @@
 
 AmplifyWorld helps businesses grow through strategic marketing, technology, branding, web development, SEO, GEO and AI automation. This repository is the planned production website for the agency.
 
-> **Development status:** **Modules 0–5 implemented and merged into `main`**: specification, Next.js/Express monorepo, design system, original visual assets, responsive shared layout and the cinematic animated mountain-to-3D-Earth homepage hero. **Modules 6–18 remain.** Other homepage sections and page-specific experiences await their designated modules.
+> **Development status:** **Modules 0–7 implemented and merged into `main`**: requirements, Next.js/Express monorepo, design assets and system, global navigation, cinematic homepage hero, full homepage sections and premium About page. **Modules 8–18 remain.** Portfolio, Blog, Contact and backend integration follow.
 
 ## Approved experience
 
@@ -56,11 +56,14 @@ pnpm install --no-frozen-lockfile
 pnpm dev
 ```
 
-The frontend with integrated Module 5 cinematic hero runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
+The frontend with integrated homepage and About experience runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
 
 The independently reviewable design kit lives in [`design-assets/`](design-assets/README.md), with integrated developer instructions in [`docs/design/INTEGRATION_HANDOFF.md`](docs/design/INTEGRATION_HANDOFF.md). The large preview assets are not production page backgrounds.
 
 ## Project documents
+
+- [Module 7 About page completion report](docs/MODULE_07_REPORT.md)
+- [Module 6 full homepage report](docs/MODULE_06_REPORT.md)
 
 - [Module 5 cinematic hero and validation](docs/MODULE_05_REPORT.md)
 
