@@ -32,15 +32,15 @@ This module deliberately contains only a usable application scaffold and simple 
 
 ## Acceptance evidence
 
-This document describes intended acceptance checks, **not evidence that GitHub CI has passed**. Consult the GitHub Actions run for the corresponding PR/commit and fix failures before marking the module accepted.
+**Accepted:** GitHub Actions CI passed on the Module 1 pull request and again on the merged Modules 1–3 `main` commit. Evidence: [Module 1 CI run](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39402236840) and [combined `main` CI run](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39402440329).
 
-- [ ] Clean pnpm install
-- [ ] Shared package build
-- [ ] Next.js production build
-- [ ] Express TypeScript build
-- [ ] Lint/typecheck
-- [ ] API and workspace tests
+- [x] Clean pnpm install
+- [x] Shared package build
+- [x] Next.js production build
+- [x] Express TypeScript build
+- [x] Lint/typecheck
+- [x] API and workspace tests
 
 ## Next
 
-Merge Modules 2–3 isolated design production kit after acceptance; integrate it with this application in Module 4.
+Modules 2–3 design production kit has been merged into `main` via PR #1. Module 4 should integrate the design tokens, actual logo, navigation/footer and page transitions with the live Next.js application. A deterministic root lockfile can be added as part of the next dependency maintenance pass; CI currently uses `pnpm install --no-frozen-lockfile`.
