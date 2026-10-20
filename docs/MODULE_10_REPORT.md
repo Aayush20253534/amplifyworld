@@ -98,6 +98,15 @@ Screenshots: [1440](qa/module-10/contact-1440.png),
 CI runs production builds, TypeScript, lint, all existing/new tests and Chromium
 checks; browser evidence is retained as workflow artifacts for 14 days.
 
+Repository evidence:
+
+- [PR #9](https://github.com/ayush-jha-NIT/amplifyworld/pull/9).
+- Implementation commit
+  [`6829bb1832463ee4c485c6986eed356624a754d2`](https://github.com/ayush-jha-NIT/amplifyworld/commit/6829bb1832463ee4c485c6986eed356624a754d2).
+- [CI run 39423732240](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39423732240)
+  completed successfully on that commit, including every validation step and
+  browser evidence upload. Documentation follow-ups are checked again before merge.
+
 ## Integration and remaining work
 
 Modules 11–13 must supply durable storage, a validated inquiry API, safe error
