@@ -23,7 +23,7 @@ The original \`design-assets/exports/artwork/editorial-{search,ai,strategy,socia
 
 ## Checks and limitations
 
-CI must pass: workspace install, production builds, TypeScript, lint and tests. Module 9 adds source-contract tests covering the same-route reader, history, data/semantic structure and asset availability.
+**CI passed:** [Module 9 PR GitHub Actions](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39415724709) successfully completed dependency installation, production builds, TypeScript, lint and tests. [PR #8](https://github.com/ayush-jha-NIT/amplifyworld/pull/8) merged as [4917920](https://github.com/ayush-jha-NIT/amplifyworld/commit/4917920cd4794abff101befbccb3d9a469dd4cf9). Module 9 adds source-contract tests covering the same-route reader, history, data/semantic structure and asset availability.
 
 The static content and accessibility behavior require additional manual browser verification, screen-reader QA, responsive screenshots and performance checks in Module 16. **This module does not imply that a real editorial CMS, database, admin panel or live published article exists.**
 

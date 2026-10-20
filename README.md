@@ -4,7 +4,7 @@
 
 AmplifyWorld helps businesses grow through strategic marketing, technology, branding, web development, SEO, GEO and AI automation. This repository is the planned production website for the agency.
 
-> **Development status:** **Modules 0–8 implemented and merged into `main`**: requirements, Next.js/Express foundation, brand design and assets, shared layout, cinematic homepage hero, complete homepage, responsive About page and interactive Portfolio showcase. **Modules 9–18 remain.** Blog, Contact, backend integrations, QA and deployment follow.
+> **Development status:** **Modules 0–9 implemented and merged into `main`**: requirements, full application foundation, design assets, navigation, cinematic homepage, About, interactive Portfolio and a complete inline Blog reader. **Modules 10–18 remain.** Contact, Neon, APIs, Resend, admin, SEO/performance, QA and deployment follow.
 
 ## Approved experience
 
@@ -56,11 +56,13 @@ pnpm install --no-frozen-lockfile
 pnpm dev
 ```
 
-The frontend with integrated homepage, About and interactive Portfolio runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
+The frontend with integrated homepage, About, Portfolio and inline Blog reader runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
 
 The independently reviewable design kit lives in [`design-assets/`](design-assets/README.md), with integrated developer instructions in [`docs/design/INTEGRATION_HANDOFF.md`](docs/design/INTEGRATION_HANDOFF.md). The large preview assets are not production page backgrounds.
 
 ## Project documents
+
+- [Module 9 Blog and inline article reader](docs/MODULE_09_REPORT.md)
 
 - [Module 8 interactive Portfolio](docs/MODULE_08_REPORT.md)
 
