@@ -24,7 +24,7 @@ Desktop split heading (31/69-style), 3D active 79% / adjacent next +23%, scale .
 
 ## Test acceptance
 
-- GitHub Actions: pnpm install, Next.js+Express builds, TypeScript, lint, tests. Source-level tests verify filters/controls/dialog/content assets.
+- **PR CI passed:** [GitHub Actions run](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39413465456) completed pnpm install, Next.js/Express builds, TypeScript, lint and Node tests. [PR #7](https://github.com/ayush-jha-NIT/amplifyworld/pull/7) was merged into `main` as [f058a1c](https://github.com/ayush-jha-NIT/amplifyworld/commit/f058a1ccffb790214fdb42c22886f610f79268ee). Source-level tests verify filters/controls/dialog/content assets.
 - Live browser screenshot fidelity, keyboard/screen reader observation, low-end mobile swipe QA and real-device GPU performance remain Module 16 audit unless separately executed.
 
 ## Boundaries
