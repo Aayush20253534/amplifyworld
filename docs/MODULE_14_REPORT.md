@@ -36,4 +36,4 @@ IdP must enforce session revocation and suitable MFA. Token signature/role verif
 
 ## CI status
 
-To be completed only after verified green checks and main merge.
+**GitHub acceptance verified:** [PR #13](https://github.com/ayush-jha-NIT/amplifyworld/pull/13) merged into `main` as commit [7b66599](https://github.com/ayush-jha-NIT/amplifyworld/commit/7b66599a6bf5a3203f3c34f65eaba8fa43351489). [PR CI run 39462804627](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39462804627) passed frozen dependency installation, Next.js/Express builds, schema checks, TypeScript, lint, unit tests, isolated PostgreSQL authorization/publishing/audit integration tests and Chromium browser regressions. Runtime production OIDC credentials and actual Neon admin sessions have not been validated.
