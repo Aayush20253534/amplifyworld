@@ -58,6 +58,7 @@ async function main() {
       await owner.query(`GRANT SELECT, INSERT, UPDATE, DELETE ON
         admin_users, categories, posts, projects, project_categories,
         project_services, project_media, inquiries TO "${role}"`);
+      await owner.query(`GRANT SELECT, INSERT, UPDATE, DELETE ON inquiry_rate_buckets TO "${role}"`);
       await owner.query(`GRANT SELECT ON services TO "${role}"`);
       await owner.query(`GRANT SELECT, INSERT ON audit_events TO "${role}"`);
     } finally {
@@ -69,7 +70,7 @@ async function main() {
     env.DATABASE_URL = runtimeUrl.toString();
     stage = "runtime integration tests";
     await new Promise<void>((resolve, reject) => {
-      const child = spawn(process.execPath, ["--import", "tsx", "--test", "tests/database.integration.ts", "tests/public.database.integration.ts"], {
+      const child = spawn(process.execPath, ["--import", "tsx", "--test", "tests/database.integration.ts", "tests/public.database.integration.ts", "tests/notifications.database.integration.ts"], {
         env, stdio: "inherit", shell: false
       });
       child.once("error", () => reject(new Error("Unable to start database tests")));
