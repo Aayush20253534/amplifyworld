@@ -36,7 +36,7 @@ No paid service, server-side generation endpoint or video API is required.
 
 ## Quality and limitations
 
-- Project CI must pass install, Next.js/Express builds, TypeScript, lint and Node tests before merging.
+- **CI passed**: [PR #4 checks](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39409159144) successfully ran installation, Next.js/Express production builds, typecheck, lint and Node tests. [PR #4](https://github.com/ayush-jha-NIT/amplifyworld/pull/4) merged to `main` as [4cc29e3](https://github.com/ayush-jha-NIT/amplifyworld/commit/4cc29e3c92e8c8a9feb3734c07245bd2d06e4808).
 - Added static Module 5 source-contract tests alongside existing route/layout tests.
 - **Module 5 is the hero only.** The remaining homepage sections will receive their complete design in Module 6; About, Portfolio, Blog and Contact follow in Modules 7–10.
 - The still fallback is intentional on devices without supported WebGL or with reduced-motion/save-data preferences. WebGL rendering requires a compatible client GPU/browser.
