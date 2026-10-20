@@ -34,6 +34,6 @@
 
 ## Verification
 
-CI must pass frozen install, Next/API production builds, Prisma schema, TypeScript, lint, unit tests, PostgreSQL integration and Chromium browser/accessibility checks. Final merge commit and CI evidence will be recorded after verification.
+**Acceptance verified:** [PR #14](https://github.com/ayush-jha-NIT/amplifyworld/pull/14) was merged into `main` as [776e3bd](https://github.com/ayush-jha-NIT/amplifyworld/commit/776e3bdebdda44bac79939c194707295c061e40f). [PR CI run #39467267575](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39467267575) passed frozen install, Next.js/Express production builds, Prisma schema, TypeScript, lint, unit tests, isolated PostgreSQL migrations/integration tests and Chromium browser/accessibility regressions. The tests identified a missing Portfolio noindex directive and skipped footer heading level, both corrected before merge. Neither real domain indexing nor production Lighthouse/CWV field scores were verified.
 
 Modules 16–18 remain: cross-device audit, verified deployment and final handover.
