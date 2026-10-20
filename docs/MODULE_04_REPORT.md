@@ -30,6 +30,9 @@ Optional public build variable: `NEXT_PUBLIC_WHATSAPP_NUMBER`, in E.164 format w
 
 ## Testing and review
 
+**GitHub CI result:** [Module 4 pull request CI](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39406692693) passed install, Next.js/Express builds, typecheck, lint and tests. [PR #3](https://github.com/ayush-jha-NIT/amplifyworld/pull/3) merged to main at [af69ffe](https://github.com/ayush-jha-NIT/amplifyworld/commit/af69ffea1a2670344b0ac956d91ce0f680789625).
+
+
 The existing repo CI validates install, Next.js/Express production builds, typecheck, lint and Node tests. Module 4 adds source-contract tests for navigation semantics, brand setup, correct anchors and WhatsApp safety.
 
 The design kit contains isolated screenshot references at 1440/1024/768/390/375. **Live Next.js screenshot comparison and screen-reader test coverage are pending** until an app-browser QA run; do not treat asset catalogue tests as proof that the production page matches screenshots.
