@@ -4,7 +4,7 @@
 
 AmplifyWorld helps businesses grow through strategic marketing, technology, branding, web development, SEO, GEO and AI automation. This repository is the planned production website for the agency.
 
-> **Development status:** **Modules 0–9 implemented and merged into `main`**: requirements, full application foundation, design assets, navigation, cinematic homepage, About, interactive Portfolio and a complete inline Blog reader. **Modules 10–18 remain.** Contact, Neon, APIs, Resend, admin, SEO/performance, QA and deployment follow.
+> **Development status:** **Modules 0–10 implemented**: requirements, application foundation, design assets, navigation, cinematic homepage, About, interactive Portfolio, inline Blog reader and responsive Contact frontend. **Modules 11–18 remain.** Contact validates details locally; online inquiry submission is unavailable until storage, the API and notification/anti-abuse handling are implemented in Modules 11–13. WhatsApp remains unavailable unless a verified business number is configured.
 
 ## Approved experience
 
@@ -12,7 +12,7 @@ AmplifyWorld helps businesses grow through strategic marketing, technology, bran
 - **About**: uncluttered brand story, mission, vision, values and differentiators.
 - **Portfolio**: animated project carousel, category filters, interactive previews and detail views. Show only authorized projects and substantiated metrics.
 - **Blog**: articles, topic filters, search and **full inline article reading on the blog page**, not redirecting users to separate pages.
-- **Contact**: inquiry form with server validation, Resend email notifications and direct WhatsApp contact.
+- **Contact**: accessible inquiry form with local validation and honest availability messaging. Server validation, persistence and Resend notifications are pending Modules 11–13. Direct WhatsApp links require a configured, verified business number.
 
 ### Branding and contact CTAs
 
@@ -52,15 +52,19 @@ Use Node.js 22 and pnpm 10.13.1. From the repository root:
 
 ```sh
 corepack enable
-pnpm install --no-frozen-lockfile
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-The frontend with integrated homepage, About, Portfolio and inline Blog reader runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`. Production contact/WhatsApp services will require real business details and later backend modules.
+The frontend with homepage, About, Portfolio, inline Blog reader and Contact runs at `http://localhost:3000` and the Express health endpoint at `http://localhost:4000/health`. Run `pnpm check` for build, typecheck, lint and tests. After building, run `pnpm --filter @amplifyworld/web exec playwright install chromium` then `pnpm --filter @amplifyworld/web test:browser` for browser interaction, accessibility and responsive checks. CI runs both suites and saves browser screenshots. The workspace source lives in `apps/web`, `apps/api` and `packages/shared`.
+
+The Contact form’s **Check Inquiry** action validates in this browser only. It makes no inquiry request, saves no draft and cannot claim receipt. `NEXT_PUBLIC_API_URL` does not enable submission: only `/health` currently exists. A real inquiry adapter, server validation, storage, anti-abuse, notification handling and reviewed privacy/retention copy are required before enabling collection. Configure `NEXT_PUBLIC_WHATSAPP_NUMBER` only with an owner-verified business number in international format; formatting validation does not itself verify ownership.
 
 The independently reviewable design kit lives in [`design-assets/`](design-assets/README.md), with integrated developer instructions in [`docs/design/INTEGRATION_HANDOFF.md`](docs/design/INTEGRATION_HANDOFF.md). The large preview assets are not production page backgrounds.
 
 ## Project documents
+
+- [Module 10 Contact implementation and validation](docs/MODULE_10_REPORT.md)
 
 - [Module 9 Blog and inline article reader](docs/MODULE_09_REPORT.md)
 
