@@ -22,3 +22,9 @@ Connected Vercel and Neon inventories contain only the unrelated Digimarket proj
 ## Release acceptance status
 
 GitHub build/tests can verify repository readiness, but cannot establish a live Neon connection, Vercel deployment, Render deployment, Resend delivery, production migration or actual customer inquiry. Module 17 is **NOT completed** until the operator checklist in DEPLOYMENT_RUNBOOK.md passes, including live transactional evidence. Module 18 must wait for that.
+
+## GitHub repository acceptance
+
+- [PR #16](https://github.com/ayush-jha-NIT/amplifyworld/pull/16) was merged into main at [a132a4b](https://github.com/ayush-jha-NIT/amplifyworld/commit/a132a4b1bad686bd07c669c59e620c7437ad7fcf).
+- [PR CI run 39473801401](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39473801401) passed frozen install, production Next/Express builds, Prisma, TypeScript, lint, all unit tests including deployment gates and CORS preflight, isolated PostgreSQL migration/integration, and existing 83 Chromium browser tests.
+- **Cloud release status:** NOT DEPLOYED OR VERIFIED. No official Vercel URL, Render deployed service, dedicated Neon project, Resend verified sender, production data migration or live email/inquiry result was established. Module 17 remains PARTIAL until those gates pass.
