@@ -126,6 +126,8 @@ Only local loopback databases may use `sslmode=disable`. All models live in
    GRANT SELECT, INSERT, UPDATE, DELETE ON
      admin_users, categories, posts, projects, project_categories,
      project_services, project_media, inquiries TO amplifyworld_app;
+   -- Module 13 distributed rate buckets (hashes only; no raw IP addresses):
+   GRANT SELECT, INSERT, UPDATE, DELETE ON inquiry_rate_buckets TO amplifyworld_app;
    GRANT SELECT ON services TO amplifyworld_app;
    GRANT SELECT, INSERT ON audit_events TO amplifyworld_app;
    ```

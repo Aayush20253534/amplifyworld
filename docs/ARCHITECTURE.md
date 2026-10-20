@@ -73,9 +73,13 @@ DATABASE_URL=
 DIRECT_URL=
 # Separate disposable local database for migration authoring only:
 SHADOW_DATABASE_URL=
+INQUIRY_EMAIL_ENABLED=false
 RESEND_API_KEY=
 RESEND_FROM_EMAIL=
 INQUIRY_NOTIFY_EMAIL=
+INQUIRY_NOTIFICATION_BATCH_SIZE=5
+INQUIRY_ABUSE_HASH_SECRET=
+INQUIRY_RETENTION_CLEANUP_ENABLED=false
 CLIENT_ORIGIN=
 PORT=
 
@@ -97,5 +101,5 @@ Populate verified values during deployment; `NEXT_PUBLIC_WHATSAPP_NUMBER` is a p
 - Vercel: frontend `apps/web`, Next.js build.
 - Render: backend `apps/api`, persistent API with `/health`.
 - Neon: hosted PostgreSQL with migration strategy appropriate to production.
-- Resend: verified sender domain, configured notification recipient.
+- Resend: verified sender domain, private notification recipient and separate scheduled dispatch worker (Module 13). A stored inquiry receipt is not proof of sent or delivered email.
 - Logs should avoid leaking credentials and personal contact content.
