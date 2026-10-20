@@ -26,6 +26,11 @@
 
 ## Dependencies
 
+Current implementation: Modules 0–10. Module 10 delivers the Contact frontend with
+local validation and unavailable-submission messaging. Inquiry persistence, the
+public endpoint and email/anti-abuse remain in Modules 11–13; the frontend does
+not simulate their completion. See [Module 10 report](MODULE_10_REPORT.md) for validation evidence and integration gates.
+
 - M1 supplies web/API build foundation.
 - M2–M4 establish the reusable visual language and assets.
 - M5–M10 build the public experience with initially typed fixture data.

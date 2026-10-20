@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { articles, blogCategories, findArticle, getRelatedArticles } from "./blog-data";
 import type { BlogArticle, BlogCategory } from "./blog-data";
