@@ -23,7 +23,7 @@ The approved **About AmplifyWorld** production page replaces the Module 1 placeh
 
 ## Acceptance evidence
 
-Module PR CI must pass install, build, typecheck, lint, and tests. The source-contract test verifies section presence, CTA destinations, assets and responsive/reduced-motion CSS.
+**GitHub Actions passed:** [Module 7 PR run](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39411988083) completed installation, Next.js/Express production build, TypeScript checks, lint and tests successfully. [PR #6](https://github.com/ayush-jha-NIT/amplifyworld/pull/6) was merged into main as [f1ed30b](https://github.com/ayush-jha-NIT/amplifyworld/commit/f1ed30bf0d4c3c1937a2549d7f147cb1f3d9a775). The source-contract test verifies section presence, CTA destinations, assets and responsive/reduced-motion CSS.
 
 Visual design-reference comparisons, interactive browser checks, real-device motion performance and screen-reader audits remain dedicated Module 16 QA. Compilation alone is not evidence of pixel-perfect similarity.
 
