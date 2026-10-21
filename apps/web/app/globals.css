@@ -1467,3 +1467,38 @@ body:has(.blog-page) .footer-invitation{display:none}
   .portfolio-selected-copy .portfolio-primary-action,.portfolio-selected-copy .portfolio-live-link{display:flex;width:100%;margin-inline:0}
   .portfolio-filterbar{overflow-wrap:anywhere}
 }
+
+
+/* Compact first-fold spacing: keep hero labels close to the sticky navbar. */
+.cinematic-hero-grid,
+.about-hero-grid,
+.portfolio-hero-layout,
+.blog-hero-grid,
+.contact-hero-grid {
+  align-items: start;
+}
+.cinematic-hero-copy,
+.about-hero-copy,
+.portfolio-hero-copy,
+.blog-hero-copy,
+.contact-hero-copy {
+  padding-top: clamp(12px, 1.6vw, 24px);
+}
+@media (max-width: 850px) {
+  .cinematic-hero-copy,
+  .about-hero-copy,
+  .portfolio-hero-copy,
+  .blog-hero-copy,
+  .contact-hero-copy {
+    padding-top: 14px;
+  }
+}
+@media (max-width: 639px) {
+  .cinematic-hero-copy,
+  .about-hero-copy,
+  .portfolio-hero-copy,
+  .blog-hero-copy,
+  .contact-hero-copy {
+    padding-top: 10px;
+  }
+}
