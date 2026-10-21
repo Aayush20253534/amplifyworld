@@ -130,6 +130,65 @@ export function createPublicRouter(options: ApiOptions = {}) {
 
   router.post("/inquiries", async (req, res) => {
     res.setHeader("Cache-Control", "no-store");
+    if (process.env.CONTACT_EMAIL_DIRECT_ENABLED === "true") {
+      const origin = req.get("origin");
+      const allowed = (process.env.CLIENT_ORIGIN ?? "").split(",").map(x => x.trim()).filter(Boolean);
+      if (!origin || !allowed.includes(origin)) {
+        error(res, 403, "ORIGIN_FORBIDDEN", "This origin cannot submit inquiries.");
+        return;
+      }
+      if (!maySubmit(req, res)) return;
+      const key = req.get("idempotency-key");
+      if (!key || !uuid.test(key)) {
+        error(res, 400, "IDEMPOTENCY_REQUIRED", "A valid idempotency key is required.");
+        return;
+      }
+      const validation = validateInquiryPayload(req.body);
+      if (!validation.valid) {
+        error(res, 422, "VALIDATION_ERROR", "Review the highlighted fields.", validation.errors);
+        return;
+      }
+      const { name, email, phone, company, service, message } = validation.data;
+      const apiKey = process.env.RESEND_API_KEY!;
+      const from = process.env.RESEND_FROM_EMAIL!;
+      const to = process.env.INQUIRY_NOTIFY_EMAIL!;
+      const serviceLabel = service.replace(/[^a-zA-Z0-9 -]/g, "").slice(0, 100);
+      try {
+        const response = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + apiKey,
+            "Content-Type": "application/json",
+            "Idempotency-Key": "amplifyworld-direct/" + key
+          },
+          body: JSON.stringify({
+            from, to: [to], reply_to: email,
+            subject: "New AmplifyWorld contact inquiry",
+            text: [
+              "New website inquiry", "Name: " + name, "Email: " + email,
+              "Phone: " + (phone || "Not provided"),
+              "Company: " + (company || "Not provided"),
+              "Service: " + serviceLabel, "", "Message:", message
+            ].join("\\n")
+          }),
+          signal: AbortSignal.timeout(12000)
+        });
+        if (!response.ok) {
+          error(res, 502, "EMAIL_PROVIDER_UNAVAILABLE", "Unable to confirm email acceptance.");
+          return;
+        }
+        const result: unknown = await response.json();
+        if (!result || typeof result !== "object" || !("id" in result) ||
+          typeof result.id !== "string" || !result.id) {
+          error(res, 502, "EMAIL_CONFIRMATION_MISSING", "Unable to confirm email acceptance.");
+          return;
+        }
+        res.status(201).json({ status: "accepted", receiptId: key, notification: "provider_accepted" });
+      } catch {
+        error(res, 503, "EMAIL_UNAVAILABLE", "Unable to confirm email acceptance. Please retry.");
+      }
+      return;
+    }
     if (!collectionAvailable(options)) {
       error(res, 503, "INQUIRIES_DISABLED", "Online inquiries are not available yet.");
       return;
