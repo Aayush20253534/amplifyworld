@@ -17,7 +17,7 @@
 
 ## Resource audit
 
-**Deployment status update, 21 October 2026:** Vercel confirms READY production deployment `dpl_8mh98Sjazachju8MD2hJiEtNwadK` at https://web-qtkhfzvl0-ayush-jha-nits-projects.vercel.app/, commit `e90f20512739cc7e0e30c0ef7831effbd5fd052e`. Team-scoped project settings and runtime logs still return 403; independent page smoke checks have not succeeded. The backend, database, collection and notification release gates remain blocked. The earlier resource audit follows.
+**Deployment status update, 21 October 2026:** Vercel confirms a READY production frontend at https://web-ayush-jha-nits-projects.vercel.app/ for `a34866f`. GitHub Actions [smoke run 39554839166](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39554839166) passed seven anonymous route checks plus branding, noindex, no-login, and nosniff verification. Vercel SSO now protects previews only. This does NOT verify backend readiness, completed Neon migration, inquiry delivery, Resend, admin identity, or final signoff. Earlier inventory follows.\n\n**Earlier deployment metadata:**
 
 ## Release acceptance status
 

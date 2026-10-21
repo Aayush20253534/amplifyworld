@@ -7,7 +7,7 @@
 | Provider | Observed | Required action |
 | --- | --- | --- |
 | GitHub | Verified source ayush-jha-NIT/amplifyworld | CI on main before deployment |
-| Vercel | Existing Next.js production deployment `dpl_8mh98Sjazachju8MD2hJiEtNwadK` READY at https://web-qtkhfzvl0-ayush-jha-nits-projects.vercel.app/, commit `e90f205`; team-scoped settings/logs return 403 and public smoke remains unverified | Retain the deployment, grant the integration access to the correct project, and verify HTTPS pages |
+| Vercel | READY frontend production https://web-ayush-jha-nits-projects.vercel.app/; `a34866f` passed [public smoke](https://github.com/ayush-jha-NIT/amplifyworld/actions/runs/39554839166); SSO now preview-only | Keep existing Vercel project and verify physical devices; no second frontend is needed |
 | Neon | Dedicated **AmplifyWorld** PostgreSQL 17 free project `lingering-pond-17105101`, branch main, database `amplifyworld`; **no application tables** yet (read-only inspection) | Apply reviewed Prisma migrations using the schema-owner credentials and configure restricted runtime role only after hosting confirmed |
 | Render | Discovered workspace `amplify's workspace` **rejected by owner** | **Do not access it.** User must connect and authorize correct workspace or explicitly approve a different free backend |
 | Resend | No sender/recipient identity or approved mail configuration provided | Do not enable notifications until sender is verified and mail destination is approved |
