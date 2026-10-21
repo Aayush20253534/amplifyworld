@@ -1577,3 +1577,5 @@ body:has(.blog-page) .footer-invitation{display:none}
 /* Deployment retry marker: production frontend change detection. */
 
 /* Production deployment retry after indexing environment update. */
+
+/* Retry-01: frontend deployment trigger. */
