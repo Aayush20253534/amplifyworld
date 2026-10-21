@@ -268,8 +268,6 @@ a.wa-cta:hover { transform: translateY(-2px); box-shadow: 0 0 25px #b020ff66; }
   .footer-social { padding-top: 2px; }
   .footer-invitation { margin: 32px 0 48px; }
   .footer-bottom { flex-direction: column; gap: 10px; }
-  .footer-invitation { margin: 32px 0 48px; }
-  .footer-bottom { flex-direction: column; }
 }
 @media (min-width: 640px) and (max-width: 1249px) {
   .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
