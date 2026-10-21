@@ -44,6 +44,16 @@ jobs:
                 exit 1
               fi
             fi
+            if [[ "$route" == "/contact" ]]; then
+              if ! grep -Fq 'https://wa.me/918931801405' "$response"; then
+                echo "::error::Production contact page must expose the approved WhatsApp destination"
+                exit 1
+              fi
+              if ! grep -Fq 'Online inquiries are not open yet.' "$response"; then
+                echo "::error::No backend/privacy approval exists; online inquiry collection must remain disabled"
+                exit 1
+              fi
+            fi
             if [[ "$route" == "/robots.txt" ]]; then
               if ! grep -Eiq '^Disallow:[[:space:]]*/[[:space:]]*$' "$response"; then
                 echo "::error::Unapproved site must remain noindex until approval"
