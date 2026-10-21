@@ -182,7 +182,7 @@ export function PortfolioGallery() {
               Explore Project <span aria-hidden="true">↗</span>
             </button>
             <a className="portfolio-secondary-action portfolio-live-link" href={activeProject.websiteUrl}
-              target="_blank" rel="noopener noreferrer" aria-label={"Visit " + activeProject.title + " website (opens a new tab)"}>
+              target="_blank" rel="noopener noreferrer" aria-label={"Visit Website: " + activeProject.title + " (opens a new tab)"}>
               Visit Website <span aria-hidden="true">↗</span>
             </a>
             <div className="portfolio-count-indicator" aria-hidden="true">
@@ -333,7 +333,7 @@ export function PortfolioGallery() {
               </ul>
               <div className="portfolio-visit-actions">
                 <a className="portfolio-primary-action" href={selectedDetail.websiteUrl} target="_blank"
-                  rel="noopener noreferrer" aria-label={"Visit " + selectedDetail.title + " website (opens a new tab)"}>
+                  rel="noopener noreferrer" aria-label={"Visit Live Website: " + selectedDetail.title + " (opens a new tab)"}>
                   Visit Live Website <span aria-hidden="true">↗</span>
                 </a>
                 <span className="portfolio-domain">{new URL(selectedDetail.websiteUrl).hostname}</span>

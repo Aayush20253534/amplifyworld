@@ -33,7 +33,7 @@ test.describe("Module 16 keyboard, motion and functional regressions", () => {
     await page.keyboard.press("Enter");
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
-    await expect(dialog.getByRole("link", { name: /Visit .* website/ })).toBeVisible();
+    await expect(dialog.getByRole("link", { name: /Visit Live Website/ })).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);
     await expect(trigger).toBeFocused();
