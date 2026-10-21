@@ -1524,3 +1524,5 @@ body:has(.blog-page) .footer-invitation{display:none}
     padding-top: 10px;
   }
 }
+
+/* Deployment verification: footer stylesheet is included in the frontend build. */
