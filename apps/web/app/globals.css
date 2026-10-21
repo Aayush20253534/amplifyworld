@@ -1447,3 +1447,15 @@ body:has(.blog-page) .footer-invitation{display:none}
 .not-found-page p:not(.eyebrow) { max-width: 50ch; }
 .not-found-page a { display: inline-flex; margin-top: 20px; padding: 13px 18px;
   border: 1px solid #a765d2; border-radius: 999px; }
+
+/* Seven real website previews, rather than illustrative template thumbnails. */
+.portfolio-stage-image,.portfolio-dialog-media{background:linear-gradient(145deg,#0c0818,#24112f)}
+.portfolio-stage-image img,.portfolio-dialog-media img{object-fit:contain}
+.portfolio-hero-frame img{object-fit:cover}
+.portfolio-mini-rail{grid-template-columns:repeat(4,minmax(0,1fr))}
+.portfolio-live-link{margin:15px 0 0 10px;background:#171022}
+.portfolio-visit-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin:27px 0 16px}
+.portfolio-domain{color:#c6b4d3;font-size:12px;overflow-wrap:anywhere}
+.portfolio-dialog-body .portfolio-dialog-disclaimer{margin-top:18px}
+@media(max-width:1099px){.portfolio-mini-rail{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:639px){.portfolio-mini-rail{grid-template-columns:1fr}.portfolio-live-link{margin-left:0}.portfolio-selected-copy .portfolio-primary-action,.portfolio-live-link,.portfolio-visit-actions .portfolio-primary-action{width:100%}}

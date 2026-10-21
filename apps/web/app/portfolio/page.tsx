@@ -7,7 +7,7 @@ import { SectionReveal } from "@/components/home/section-reveal";
 
 export const metadata: Metadata = {
   title: "Our Portfolio",
-  description: "Explore illustrative growth website, performance marketing and local discovery concepts from AmplifyWorld. These are design studies, not verified client engagements.",
+  description: "Explore seven website projects by AmplifyWorld across fashion, restaurants, hospitality, education, automotive services and healthcare.",
   robots: { index: false, follow: true }
 };
 
@@ -24,20 +24,20 @@ export default function PortfolioPage() {
       <section className="portfolio-hero" aria-labelledby="portfolio-hero-heading">
         <div className="content-shell portfolio-hero-layout">
           <div className="portfolio-hero-copy">
-            <p className="eyebrow">Our work | Design concepts</p>
+            <p className="eyebrow">Our work | Website portfolio</p>
             <h1 id="portfolio-hero-heading">
               Our Portfolio <span className="gradient-text">Projects That Move Brands Forward.</span>
             </h1>
-            <p>Explore the possibilities of connected strategy, websites and digital experiences. Every example shown here is an original, illustrative design concept.</p>
+            <p>Explore seven websites built for distinct businesses, each with its own visual identity, user experience and route to action.</p>
             <div className="portfolio-hero-actions">
               <Link className="portfolio-primary-action" href="/contact">Start Your Project <span aria-hidden="true">↗</span></Link>
-              <Link className="portfolio-secondary-action" href="#projects">Explore Concepts <span aria-hidden="true">↓</span></Link>
+              <Link className="portfolio-secondary-action" href="#projects">Explore Projects <span aria-hidden="true">↓</span></Link>
             </div>
           </div>
           <div className="portfolio-hero-stack" aria-hidden="true">
-            <div className="portfolio-hero-frame portfolio-hero-frame-back"><Image src="/design/templates/project-local.svg" alt="" width={1200} height={800} loading="lazy" /></div>
-            <div className="portfolio-hero-frame portfolio-hero-frame-middle"><Image src="/design/templates/project-campaign.svg" alt="" width={1200} height={800} loading="lazy" /></div>
-            <div className="portfolio-hero-frame portfolio-hero-frame-front"><Image src="/design/templates/project-website.svg" alt="" width={1200} height={800} priority /></div>
+            <div className="portfolio-hero-frame portfolio-hero-frame-back"><Image src="/portfolio/casa-de-grande.webp" alt="" width={900} height={506} loading="lazy" /></div>
+            <div className="portfolio-hero-frame portfolio-hero-frame-middle"><Image src="/portfolio/big-mos.webp" alt="" width={900} height={506} loading="lazy" /></div>
+            <div className="portfolio-hero-frame portfolio-hero-frame-front"><Image src="/portfolio/style-club.webp" alt="" width={900} height={506} priority /></div>
           </div>
         </div>
       </section>

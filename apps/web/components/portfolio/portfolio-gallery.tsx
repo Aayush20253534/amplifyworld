@@ -22,9 +22,9 @@ function ProjectArtwork({
 
   if (failed) {
     return (
-      <div className={"portfolio-media-unavailable " + className} role="img" aria-label={"Illustration unavailable for " + project.title}>
+      <div className={"portfolio-media-unavailable " + className} role="img" aria-label={"Preview unavailable for " + project.title}>
         <Image src="/design/icons/empty.svg" alt="" width={42} height={42} />
-        <span>Illustration unavailable</span>
+        <span>Website preview unavailable</span>
       </div>
     );
   }
@@ -33,8 +33,8 @@ function ProjectArtwork({
     <Image
       src={project.image}
       alt={project.imageAlt}
-      width={1200}
-      height={800}
+      width={900}
+      height={506}
       sizes={sizes}
       className={className}
       onError={() => setFailed(true)}
@@ -60,6 +60,7 @@ export function PortfolioGallery() {
         project.title,
         project.category,
         project.summary,
+        project.websiteUrl,
         ...project.services
       ].join(" ").toLocaleLowerCase().includes(normalized);
     });
@@ -129,10 +130,10 @@ export function PortfolioGallery() {
     <section className="portfolio-browser content-shell" id="projects" aria-labelledby="portfolio-browser-title">
       <div className="portfolio-browser-heading">
         <div>
-          <p className="eyebrow">Concept gallery</p>
-          <h2 id="portfolio-browser-title">Explore the <span className="gradient-text">Possibilities.</span></h2>
+          <p className="eyebrow">Selected website projects</p>
+          <h2 id="portfolio-browser-title">Explore Our <span className="gradient-text">Work.</span></h2>
         </div>
-        <p>Each artwork is a design concept, not a completed client project or a claim of results.</p>
+        <p>Seven websites across fashion, hospitality, education, automotive services and healthcare.</p>
       </div>
 
       <div className="portfolio-filterbar" aria-label="Filter projects">
@@ -163,13 +164,13 @@ export function PortfolioGallery() {
       </div>
 
       <p className="portfolio-result-count" role="status" aria-live="polite">
-        {filtered.length} {filtered.length === 1 ? "concept" : "concepts"} found
+        {filtered.length} {filtered.length === 1 ? "project" : "projects"} found
       </p>
 
       {activeProject ? (
         <div className="portfolio-browser-layout">
           <div className="portfolio-selected-copy">
-            <span className="portfolio-concept-tag">Concept / Placeholder</span>
+            <span className="portfolio-concept-tag"{activeProject.status}</span>
             <p className="portfolio-selected-category">{activeProject.category}</p>
             <h3>{activeProject.title}</h3>
             <p>{activeProject.summary}</p>
@@ -178,8 +179,12 @@ export function PortfolioGallery() {
               className="portfolio-primary-action"
               onClick={(event) => openDetails(activeProject, event.currentTarget)}
             >
-              Explore Concept <span aria-hidden="true">↗</span>
+              Explore Project <span aria-hidden="true">↗</span>
             </button>
+            <a className="portfolio-secondary-action portfolio-live-link" href={activeProject.websiteUrl}
+              target="_blank" rel="noopener noreferrer" aria-label={"Visit " + activeProject.title + " website (opens a new tab)"}>
+              Visit Website <span aria-hidden="true">↗</span>
+            </a>
             <div className="portfolio-count-indicator" aria-hidden="true">
               <strong>{String(index + 1).padStart(2, "0")}</strong>
               <span>/ {String(filtered.length).padStart(2, "0")}</span>
@@ -190,7 +195,7 @@ export function PortfolioGallery() {
               className="portfolio-stage"
               role="region"
               aria-roledescription="carousel"
-              aria-label="Portfolio concepts. Use the arrow keys or previous and next buttons."
+              aria-label="Portfolio projects. Use the arrow keys or previous and next buttons."
               tabIndex={0}
               onKeyDown={onCarouselKey}
               onTouchStart={onTouchStart}
@@ -212,7 +217,7 @@ export function PortfolioGallery() {
                       <ProjectArtwork project={project} sizes="(max-width: 639px) 84vw, 60vw" />
                     </div>
                     <div className="portfolio-stage-caption">
-                      <span>Concept / Placeholder</span>
+                      <span{project.status}</span>
                       <strong>{project.title}</strong>
                     </div>
                   </div>
@@ -223,7 +228,7 @@ export function PortfolioGallery() {
               <button
                 type="button"
                 className="portfolio-round-control"
-                aria-label="Previous concept"
+                aria-label="Previous project"
                 onClick={() => move(-1)}
                 disabled={filtered.length < 2}
               >
@@ -244,7 +249,7 @@ export function PortfolioGallery() {
               <button
                 type="button"
                 className="portfolio-round-control"
-                aria-label="Next concept"
+                aria-label="Next project"
                 onClick={() => move(1)}
                 disabled={filtered.length < 2}
               >
@@ -252,7 +257,7 @@ export function PortfolioGallery() {
               </button>
             </div>
             <p className="sr-only" aria-live="polite" aria-atomic="true">
-              {activeProject.title}, concept {index + 1} of {filtered.length}
+              {activeProject.title}, project {index + 1} of {filtered.length}
             </p>
           </div>
           <div className="portfolio-mini-rail" aria-label="Select a concept">
@@ -266,7 +271,7 @@ export function PortfolioGallery() {
               >
                 <span className="portfolio-mini-image"><ProjectArtwork project={project} sizes="100px" /></span>
                 <span>
-                  <span className="portfolio-mini-concept">Concept</span>
+                  <span className="portfolio-mini-concept">Website</span>
                   <strong>{project.title}</strong>
                   <small>{project.category}</small>
                 </span>
@@ -277,8 +282,8 @@ export function PortfolioGallery() {
       ) : (
         <div className="portfolio-empty" role="status">
           <Image src="/design/icons/empty.svg" alt="" width={48} height={48} />
-          <h3>No matching concepts</h3>
-          <p>Try a different category or search term. Published client projects will be added once verified.</p>
+          <h3>No matching projects</h3>
+          <p>Try another category or change your search.</p>
           <button
             className="portfolio-secondary-action"
             type="button"
@@ -288,8 +293,7 @@ export function PortfolioGallery() {
       )}
 
       <p className="portfolio-disclosure">
-        <strong>Concept / Placeholder:</strong> The visuals are illustrative design studies. No client relationship,
-        completed work, results, live preview or testimonial is implied.
+        <strong>Website previews:</strong> Images are based on supplied screenshots. Live websites may have changed since capture. No traffic, conversion or performance results are claimed.
       </p>
 
       {selectedDetail && (
@@ -315,21 +319,26 @@ export function PortfolioGallery() {
               <ProjectArtwork project={selectedDetail} sizes="(max-width: 850px) 90vw, 600px" />
             </div>
             <div className="portfolio-dialog-body">
-              <span className="portfolio-concept-tag">Concept / Placeholder</span>
+              <span className="portfolio-concept-tag"{selectedDetail.status}</span>
               <p className="portfolio-selected-category">{selectedDetail.category}</p>
               <h2 id="portfolio-detail-title">{selectedDetail.title}</h2>
               <p id="portfolio-detail-desc">{selectedDetail.objective}</p>
-              <h3>Concept scope</h3>
+              <h3>Project scope</h3>
               <ul className="portfolio-scope">
                 {selectedDetail.services.map((service) => <li key={service}>{service}</li>)}
               </ul>
-              <h3>Creative approach</h3>
+              <h3>Website experience</h3>
               <ul className="portfolio-approach">
                 {selectedDetail.approach.map((item) => <li key={item}>{item}</li>)}
               </ul>
-              <p className="portfolio-dialog-disclaimer">
-                This is an illustrative concept, not evidence of a delivered client engagement or measured outcome.
-              </p>
+              <div className="portfolio-visit-actions">
+                <a className="portfolio-primary-action" href={selectedDetail.websiteUrl} target="_blank"
+                  rel="noopener noreferrer" aria-label={"Visit " + selectedDetail.title + " website (opens a new tab)"}>
+                  Visit Live Website <span aria-hidden="true">↗</span>
+                </a>
+                <span className="portfolio-domain">{new URL(selectedDetail.websiteUrl).hostname}</span>
+              </div>
+              <p className="portfolio-dialog-disclaimer">The screenshot reflects the supplied preview. Site features and availability can change; no performance results are implied.</p>
             </div>
           </div>
         </dialog>

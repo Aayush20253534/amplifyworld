@@ -1,11 +1,12 @@
 export const portfolioCategories = [
   "All",
-  "Web Development",
-  "SEO & GEO",
-  "Performance Marketing",
-  "Social Media"
+  "Fashion & Retail",
+  "Food & Beverage",
+  "Hospitality",
+  "Education",
+  "Automotive",
+  "Healthcare"
 ] as const;
-
 export type PortfolioCategory = (typeof portfolioCategories)[number];
 export type ProjectCategory = Exclude<PortfolioCategory, "All">;
 
@@ -17,63 +18,160 @@ export type PortfolioProject = {
   objective: string;
   image: string;
   imageAlt: string;
+  websiteUrl: string;
   services: readonly string[];
   approach: readonly string[];
-  status: "Concept / Placeholder";
+  status: "Live Website";
 };
 
-/**
- * Concept artwork provided by the approved design package.
- * These are explicitly NOT clients, delivered engagements, or performance evidence.
- * Replace with permission-cleared case studies from the CMS in Module 14.
- */
-export const portfolioProjects: readonly PortfolioProject[] = [
+/** Team-supplied projects and optimized screenshots. Descriptions refer to visible
+ * website features, not independently verified conversion or traffic results. */
+export const portfolioProjects = [
   {
-    id: "growth-website-concept",
-    title: "Growth website concept",
-    category: "Web Development",
-    summary: "A conversion-conscious website layout demonstrating clear journeys from interest to inquiry.",
-    objective: "Explore how a distinctive business website could connect brand storytelling with a straightforward path to contact.",
-    image: "/design/templates/project-website.svg",
-    imageAlt: "Original illustrative purple growth website design, not a live client website",
-    services: ["Website strategy", "UI/UX design", "Conversion-oriented layout"],
-    approach: [
-      "Give the brand a clear headline and visual hierarchy.",
-      "Organize service information around customer questions.",
-      "Make contact actions easy to find across screen sizes."
+    "id": "style-club",
+    "title": "Style Club",
+    "category": "Fashion & Retail",
+    "summary": "A fashion storefront with editorial product storytelling and streamlined shopping journeys.",
+    "objective": "Showcase new arrivals and collections for women, men and kids in a striking retail experience.",
+    "image": "/portfolio/style-club.webp",
+    "imageAlt": "Style Club homepage featuring a model in denim and fashion category navigation",
+    "websiteUrl": "https://www.styleclub.fashion/",
+    "services": [
+      "Fashion e-commerce",
+      "Responsive storefront",
+      "Product discovery"
     ],
-    status: "Concept / Placeholder"
+    "approach": [
+      "Lead with full-screen campaign imagery and impactful fashion typography.",
+      "Organize browsing around arrivals, collections and shopping categories.",
+      "Make search, favourites and shopping easy to find."
+    ],
+    "status": "Live Website"
   },
   {
-    id: "campaign-creative-concept",
-    title: "Campaign creative concept",
-    category: "Performance Marketing",
-    summary: "A visual direction for connected campaigns and performance-minded creative work.",
-    objective: "Explore a coherent creative system that could work across awareness and conversion touchpoints.",
-    image: "/design/templates/project-campaign.svg",
-    imageAlt: "Original illustrative campaign dashboard and creative shapes, not an actual client campaign",
-    services: ["Creative direction", "Meta Ads planning", "Campaign storytelling"],
-    approach: [
-      "Establish one recognizable message across variations.",
-      "Design clear creative calls to action.",
-      "Make room for responsible measurement and iteration."
+    "id": "big-mos",
+    "title": "Big Mo's Cafe",
+    "category": "Food & Beverage",
+    "summary": "A lively café website for discovering vegetarian food, menus and ordering options.",
+    "objective": "Help visitors explore the Prayagraj café and its menu while keeping ordering accessible.",
+    "image": "/portfolio/big-mos.webp",
+    "imageAlt": "Big Mo's Cafe restaurant homepage with a hero photograph and online-order button",
+    "websiteUrl": "https://big-mos.vercel.app/",
+    "services": [
+      "Restaurant website",
+      "Menu experience",
+      "Ordering journey"
     ],
-    status: "Concept / Placeholder"
+    "approach": [
+      "Lead with real café imagery and an inviting message.",
+      "Present menu, gallery, outlets and contact in clear navigation.",
+      "Give ordering a prominent next step."
+    ],
+    "status": "Live Website"
   },
   {
-    id: "local-discovery-concept",
-    title: "Local discovery concept",
-    category: "SEO & GEO",
-    summary: "A conceptual local-discovery experience for helping nearby customers find relevant businesses.",
-    objective: "Show how well-organized local information and clear business details could improve discoverability.",
-    image: "/design/templates/project-local.svg",
-    imageAlt: "Original illustrative local discovery interface, not a real business listing",
-    services: ["Local search", "Google Business Profile", "SEO and GEO"],
-    approach: [
-      "Organize helpful location and service information.",
-      "Make key contact and discovery details easy to scan.",
-      "Support search-friendly, accessible content structures."
+    "id": "bar-code",
+    "title": "Bar Code",
+    "category": "Food & Beverage",
+    "summary": "A dark, gold-accented bar and restaurant website with an atmospheric nightlife identity.",
+    "objective": "Introduce the venue, dining experience and table-reservation path.",
+    "image": "/portfolio/bar-code.webp",
+    "imageAlt": "Bar Code restaurant homepage featuring a gold-accented black theme and reservation button",
+    "websiteUrl": "https://www.thebarcode.in/",
+    "services": [
+      "Hospitality website",
+      "Brand presentation",
+      "Reservation entry point"
     ],
-    status: "Concept / Placeholder"
+    "approach": [
+      "Use warm imagery and elegant type to establish a venue identity.",
+      "Organize drinks, food, gallery and visit information.",
+      "Keep table reservation easy to discover."
+    ],
+    "status": "Live Website"
+  },
+  {
+    "id": "casa-de-grande",
+    "title": "Casa De Grande",
+    "category": "Hospitality",
+    "summary": "An elegant boutique hotel website led by property photography and hospitality storytelling.",
+    "objective": "Introduce the hotel's surroundings and give guests an easy path to explore or book.",
+    "image": "/portfolio/casa-de-grande.webp",
+    "imageAlt": "Casa De Grande boutique hotel website with illuminated exterior and booking action",
+    "websiteUrl": "https://www.thecasahotel.in/",
+    "services": [
+      "Hotel website",
+      "Visual storytelling",
+      "Booking entry point"
+    ],
+    "approach": [
+      "Use architecture and property imagery as the hero.",
+      "Build a calm editorial hierarchy with refined typography.",
+      "Keep booking and hotel discovery visible."
+    ],
+    "status": "Live Website"
+  },
+  {
+    "id": "ignited-brains",
+    "title": "Ignited Brains",
+    "category": "Education",
+    "summary": "An education website showcasing hands-on science, STEM, AI and robotics learning.",
+    "objective": "Explain future-ready learning spaces and guide schools towards solutions and partnerships.",
+    "image": "/portfolio/ignited-brains.webp",
+    "imageAlt": "Ignited Brains website featuring a space-inspired learning innovation visual",
+    "websiteUrl": "https://www.ignitedbrain.in/",
+    "services": [
+      "Education website",
+      "Solutions presentation",
+      "Content navigation"
+    ],
+    "approach": [
+      "Combine an inspiring visual with a clear education mission.",
+      "Surface STEM, space and robotics learning solutions.",
+      "Guide educators and partners towards relevant information."
+    ],
+    "status": "Live Website"
+  },
+  {
+    "id": "rovauto",
+    "title": "Rovauto",
+    "category": "Automotive",
+    "summary": "An automotive platform presenting vehicle service and garage booking in Prayagraj.",
+    "objective": "Make available service routes and information for vehicle owners and garage partners easy to discover.",
+    "image": "/portfolio/rovauto.webp",
+    "imageAlt": "Rovauto website with a car workshop hero and garage booking headline",
+    "websiteUrl": "https://www.rovauto.com/",
+    "services": [
+      "Automotive platform",
+      "Service booking interface",
+      "Responsive website"
+    ],
+    "approach": [
+      "Put the vehicle-service proposition above the fold.",
+      "Offer distinct actions for drivers and garage partners.",
+      "Organize booking and services around clarity and speed."
+    ],
+    "status": "Live Website"
+  },
+  {
+    "id": "lotus-family-dental",
+    "title": "Lotus Family Dental",
+    "category": "Healthcare",
+    "summary": "A dental-clinic website centred on specialist profiles, treatments and appointments.",
+    "objective": "Help visitors meet the clinic team and understand how to request dental care.",
+    "image": "/portfolio/lotus-family-dental.webp",
+    "imageAlt": "Lotus Family Dental website with doctors' profiles and clinic introduction",
+    "websiteUrl": "https://lotusfamilydental.me/",
+    "services": [
+      "Healthcare website",
+      "Specialist profiles",
+      "Appointment entry point"
+    ],
+    "approach": [
+      "Highlight the clinic team with prominent profile photography.",
+      "Structure treatments and practice information for easy browsing.",
+      "Give visitors clear appointment and contact actions."
+    ],
+    "status": "Live Website"
   }
-];
+] as const satisfies readonly PortfolioProject[];

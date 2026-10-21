@@ -20,30 +20,30 @@ test.describe("Module 16 keyboard, motion and functional regressions", () => {
 
   test("portfolio keyboard carousel, detail dialog Escape and focus restoration", async ({ page }) => {
     await page.goto("/portfolio");
-    const stage = page.getByRole("region", { name: /Portfolio concepts/ });
+    const stage = page.getByRole("region", { name: /Portfolio projects/ });
     await expect(stage).toBeVisible();
-    await expect(page.getByText("3 concepts found")).toBeVisible();
+    await expect(page.getByText("7 projects found")).toBeVisible();
     const title = page.locator(".portfolio-selected-copy h3");
     const first = await title.textContent();
     await stage.focus();
     await page.keyboard.press("ArrowRight");
     await expect(title).not.toHaveText(first ?? "");
-    const trigger = page.getByRole("button", { name: /Explore Concept/ });
+    const trigger = page.getByRole("button", { name: /Explore Project/ });
     await trigger.focus();
     await page.keyboard.press("Enter");
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
-    await expect(dialog.getByText("Concept / Placeholder").first()).toBeVisible();
+    await expect(dialog.getByRole("link", { name: /Visit .* website/ })).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);
     await expect(trigger).toBeFocused();
-    await page.getByRole("button", { name: "Performance Marketing", exact: true }).click();
-    await expect(page.getByText("1 concept found")).toBeVisible();
-    await expect(page.getByRole("button", { name: "Next concept" })).toBeDisabled();
+    await page.getByRole("button", { name: "Fashion & Retail", exact: true }).click();
+    await expect(page.getByText("1 project found")).toBeVisible();
+    await expect(page.getByRole("button", { name: "Next project" })).toBeDisabled();
     await page.getByRole("searchbox", { name: "Search projects" }).fill("no-matching-project-123");
-    await expect(page.getByText("No matching concepts")).toBeVisible();
+    await expect(page.getByText("No matching projects")).toBeVisible();
     await page.getByRole("button", { name: "Clear filters" }).click();
-    await expect(page.getByText("3 concepts found")).toBeVisible();
+    await expect(page.getByText("7 projects found")).toBeVisible();
   });
 
   test("blog inline reader keeps same URL path, history Back/Forward, TOC and focus", async ({ page }) => {
