@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { afterEach, test } from "node:test";
 import { cleanup, fireEvent, render, waitFor, act } from "@testing-library/react";
 import { InquiryForm } from "../components/contact/inquiry-form";
-import { getWhatsAppHref } from "../components/whatsapp-cta";
+import { getOfficialWhatsAppHref, getWhatsAppHref } from "../components/whatsapp-cta";
 import {
   EMPTY_INQUIRY, normalizeInquiry, validateInquiry, submitWithDeadline,
   type InquiryResult, type InquirySubmitter
@@ -20,6 +20,15 @@ test("WhatsApp only builds a direct encoded URL for an explicitly configured int
   assert.equal(url.origin, "https://wa.me");
   assert.equal(url.pathname, "/447700900123");
   assert.equal(url.searchParams.get("text"), "Hello AmplifyWorld, I'd like to discuss growing my business.");
+});
+
+test("verified AmplifyWorld WhatsApp fallback remains usable when no override is set", () => {
+  const defaultUrl = new URL(getOfficialWhatsAppHref("")!);
+  assert.equal(defaultUrl.origin, "https://wa.me");
+  assert.equal(defaultUrl.pathname, "/918931801405");
+  assert.equal(defaultUrl.searchParams.get("text"), "Hello AmplifyWorld, I'd like to discuss growing my business.");
+  assert.equal(new URL(getOfficialWhatsAppHref("+447700900123")!).pathname, "/447700900123");
+  assert.equal(getOfficialWhatsAppHref("invalid"), null);
 });
 
 const valid = {

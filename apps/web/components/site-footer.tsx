@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SERVICES } from "@amplifyworld/shared";
-import { getWhatsAppHref, WhatsAppCta } from "./whatsapp-cta";
+import { getOfficialWhatsAppHref, WhatsAppCta } from "./whatsapp-cta";
 
 export function SiteFooter() {
   return (
@@ -14,7 +14,7 @@ export function SiteFooter() {
           </h2>
           <p>Let&apos;s connect strategy, creativity and technology to your business goals.</p>
           <WhatsAppCta label="Talk to Amplify World" />
-          {!getWhatsAppHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) && (
+          {!getOfficialWhatsAppHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) && (
             <p className="footer-configuration">WhatsApp contact will be enabled once our verified number is configured.</p>
           )}
         </section>

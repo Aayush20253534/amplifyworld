@@ -25,8 +25,7 @@ test("keyboard validation, honest unavailable result and zero inquiry requests",
   await expect(page.getByRole("status")).toContainText("Nothing has been sent");
   await expect(page.getByRole("status")).toBeFocused();
   await expect(page.getByRole("textbox", { name: "Full Name", exact: true })).toHaveValue("Sample Person");
-  await expect(page.locator('a[href^="https://wa.me/"]')).toHaveCount(0);
-  await expect(page.locator('[data-whatsapp-state="unconfigured"]').first()).toBeDisabled();
+  await expect(page.locator('a[href^="https://wa.me/918931801405?"]').first()).toHaveAttribute("data-whatsapp-state", "configured");
   expect(inquiries).toEqual([]);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 });

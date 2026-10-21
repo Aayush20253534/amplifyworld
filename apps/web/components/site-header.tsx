@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { WhatsAppCta } from "./whatsapp-cta";
+import { getOfficialWhatsAppHref, WhatsAppCta } from "./whatsapp-cta";
 
 const links = [
   { href: "/", label: "Home" },
@@ -82,7 +82,9 @@ export function SiteHeader() {
           })}
           <div className="mobile-contact">
             <WhatsAppCta label="Let's Grow" />
-            <p className="contact-pending">WhatsApp activation awaits a verified business number.</p>
+            {!getOfficialWhatsAppHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) && (
+              <p className="contact-pending">WhatsApp contact is currently unavailable.</p>
+            )}
           </div>
         </nav>
 

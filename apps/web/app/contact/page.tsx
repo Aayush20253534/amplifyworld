@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ContactInquiry } from "@/components/contact/contact-inquiry";
 import { SectionReveal } from "@/components/home/section-reveal";
-import { getWhatsAppHref, WhatsAppCta } from "@/components/whatsapp-cta";
+import { getOfficialWhatsAppHref, WhatsAppCta } from "@/components/whatsapp-cta";
 
 const pageDescription = "Contact AmplifyWorld to discuss marketing, SEO, GEO, websites or AI-enabled digital experiences. Check available contact options.";
 const canonical = absolutePublicUrl("/contact");
@@ -24,7 +24,7 @@ const nextSteps = [
 
 export default function ContactPage() {
   const inquiriesAvailable = process.env.NEXT_PUBLIC_INQUIRIES_ENABLED === "true" && Boolean(process.env.NEXT_PUBLIC_API_URL);
-  const whatsappAvailable = Boolean(getWhatsAppHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER));
+  const whatsappAvailable = Boolean(getOfficialWhatsAppHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER));
 
   return (
     <main className="contact-page">

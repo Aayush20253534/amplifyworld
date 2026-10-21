@@ -14,8 +14,16 @@ export function getWhatsAppHref(raw: string | undefined): string | null {
   return `https://wa.me/${number}?text=${message}`;
 }
 
+// Public business WhatsApp destination supplied for AmplifyWorld. Keep the
+// environment override so operators can switch numbers without a code change.
+export const OFFICIAL_WHATSAPP_NUMBER = "918931801405";
+
+export function getOfficialWhatsAppHref(configured: string | undefined): string | null {
+  return getWhatsAppHref(configured || OFFICIAL_WHATSAPP_NUMBER);
+}
+
 export function WhatsAppCta({ label, variant = "large", className = "" }: WhatsAppCtaProps) {
-  const href = getWhatsAppHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER);
+  const href = getOfficialWhatsAppHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER);
   const classNames = `wa-cta ${variant === "small" ? "wa-cta-small" : ""} ${className}`.trim();
   const contents = (
     <>
