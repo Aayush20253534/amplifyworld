@@ -1,0 +1,62 @@
+name: Public production smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  public-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      BASE_URL: https://web-ayush-jha-nits-projects.vercel.app
+    steps:
+      - name: Check HTTPS pages, indexing and anonymous access
+        shell: bash
+        run: |
+          set -euo pipefail
+          routes=(/ /about /contact /portfolio /blog /robots.txt /sitemap.xml)
+          for route in "${routes[@]}"; do
+            response="$(mktemp)"
+            headers="$(mktemp)"
+            status="$(curl --silent --show-error --location --retry 5 --retry-delay 5 --retry-all-errors --connect-timeout 8 --max-time 25 --dump-header "$headers" --output "$response" --write-out '%{http_code}' "${BASE_URL}${route}")"
+            if [[ "$status" != "200" ]]; then
+              echo "::error::Anonymous GET ${route} returned HTTP ${status}"
+              exit 1
+            fi
+            if grep -Eiq 'Authentication Required|Vercel Authentication|Log in to Vercel' "$response"; then
+              echo "::error::Anonymous GET ${route} appears to require Vercel authentication"
+              exit 1
+            fi
+            if [[ "$route" == "/" || "$route" == "/about" || "$route" == "/contact" || "$route" == "/blog" || "$route" == "/portfolio" ]]; then
+              if ! grep -qi 'AmplifyWorld' "$response"; then
+                echo "::error::Page ${route} did not render the expected brand"
+                exit 1
+              fi
+            fi
+            if [[ "$route" == "/blog" || "$route" == "/portfolio" ]]; then
+              if ! grep -qi 'noindex' "$response"; then
+                echo "::error::Sample content page ${route} lacks noindex"
+                exit 1
+              fi
+            fi
+            if [[ "$route" == "/robots.txt" ]]; then
+              if ! grep -Eiq '^Disallow:[[:space:]]*/[[:space:]]*$' "$response"; then
+                echo "::error::Unapproved site must remain noindex until approval"
+                exit 1
+              fi
+            fi
+            if [[ "$route" == "/" ]]; then
+              if ! grep -Eiq '^x-content-type-options:[[:space:]]*nosniff' "$headers"; then
+                echo "::error::Expected nosniff response header missing"
+                exit 1
+              fi
+            fi
+            echo "PASS: anonymous HTTPS GET ${route} returned 200"
+            rm -f "$response" "$headers"
+          done
+          echo "Read-only production smoke passed. Backend, privacy, SEO activation and transaction gates are NOT certified."
