@@ -7,7 +7,7 @@
 | Provider | Observed | Required action |
 | --- | --- | --- |
 | GitHub | Verified source ayush-jha-NIT/amplifyworld | CI on main before deployment |
-| Vercel | Desired team `ayush-jha-nits-projects` returns **403** from both linked accounts | Grant the integration explicit team permission; do not create in an unrelated team |
+| Vercel | Existing Next.js production deployment `dpl_8mh98Sjazachju8MD2hJiEtNwadK` READY at https://web-qtkhfzvl0-ayush-jha-nits-projects.vercel.app/, commit `e90f205`; team-scoped settings/logs return 403 and public smoke remains unverified | Retain the deployment, grant the integration access to the correct project, and verify HTTPS pages |
 | Neon | Dedicated **AmplifyWorld** PostgreSQL 17 free project `lingering-pond-17105101`, branch main, database `amplifyworld`; **no application tables** yet (read-only inspection) | Apply reviewed Prisma migrations using the schema-owner credentials and configure restricted runtime role only after hosting confirmed |
 | Render | Discovered workspace `amplify's workspace` **rejected by owner** | **Do not access it.** User must connect and authorize correct workspace or explicitly approve a different free backend |
 | Resend | No sender/recipient identity or approved mail configuration provided | Do not enable notifications until sender is verified and mail destination is approved |
@@ -39,7 +39,7 @@ Keep DIRECT_URL, SHADOW_DATABASE_URL and TEST_DATABASE_ADMIN_URL out of the runn
 
 ## 3. Vercel frontend
 
-Create a NEW Vercel project from the AmplifyWorld repo; leave the unrelated Digimarket project unchanged.
+Use the existing Vercel production project `web` and deployment `dpl_8mh98Sjazachju8MD2hJiEtNwadK`. Do not create a duplicate or touch DigiMarket. Confirm current Git commit, security settings, environment flags, deployment protection and real HTTP response before release.
 
 - Framework: Next.js; root directory: apps/web; production Git branch main.
 - Install: pnpm install --frozen-lockfile, using pnpm monorepo auto-detection.

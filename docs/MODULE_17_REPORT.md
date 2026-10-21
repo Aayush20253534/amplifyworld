@@ -17,7 +17,7 @@
 
 ## Resource audit
 
-**Updated 21 October 2026:** A dedicated AmplifyWorld Neon PostgreSQL 17 project now exists, ID `lingering-pond-17105101` in free organization `org-morning-sun-25779618`, branch `main`, database `amplifyworld`. Read-only `information_schema.tables` inspection showed **no public application tables**, so production Prisma migrations have NOT been applied. Both connected Vercel accounts still receive **403 Forbidden** for requested team `ayush-jha-nits-projects`; no Vercel deployment is established. The user explicitly rejected the Render workspace named `amplify's workspace`, so it must not be selected or modified. No approved alternative backend workspace has been provided. Do not reuse any Digimarket infrastructure. A verified Resend sender, recipient, privacy approval and real deployment URLs are not yet provided.
+**Deployment status update, 21 October 2026:** Vercel confirms READY production deployment `dpl_8mh98Sjazachju8MD2hJiEtNwadK` at https://web-qtkhfzvl0-ayush-jha-nits-projects.vercel.app/, commit `e90f20512739cc7e0e30c0ef7831effbd5fd052e`. Team-scoped project settings and runtime logs still return 403; independent page smoke checks have not succeeded. The backend, database, collection and notification release gates remain blocked. The earlier resource audit follows.
 
 ## Release acceptance status
 

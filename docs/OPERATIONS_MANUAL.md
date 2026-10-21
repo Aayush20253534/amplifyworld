@@ -14,7 +14,7 @@
 ## First-day operator checklist
 
 1. Read [Deployment Runbook](DEPLOYMENT_RUNBOOK.md), [Database Guide](DATABASE.md), [Modules 14–17](MODULE_17_REPORT.md) and this manual. Confirm who approves release and accepts incidents.
-2. Confirm the requested Vercel team **\`ayush-jha-nits-projects\`** authorizes the connected integration; both linked accounts returned 403 at the 21 October 2026 audit.
+2. Retain the existing production Vercel deployment `dpl_8mh98Sjazachju8MD2hJiEtNwadK` (READY on `e90f205`) at https://web-qtkhfzvl0-ayush-jha-nits-projects.vercel.app/. Grant team-scoped project/log access to the connected integration, then independently smoke-test HTTPS pages.
 3. Connect the **correct Render workspace**. The discovered \`amplify's workspace\` was rejected; do not select it for any operation.
 4. Reuse the existing isolated Neon free project **\`lingering-pond-17105101\`**, branch \`main\`, database \`amplifyworld\`. Schema inspection showed **zero public application tables**, so do not mark migrations complete.
 5. Decide production domain (provider-generated URLs are permitted), privacy policy, retention days, Resend verified sender/destination, content publication approval and admin OIDC provider before enabling those corresponding features.

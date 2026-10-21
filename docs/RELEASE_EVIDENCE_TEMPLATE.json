@@ -2,12 +2,89 @@
   "schemaVersion": 1,
   "sourceCommit": "",
   "gates": {
-    "githubCiGreen,[object Object]": [
-      "frontendDeployed",
-      {
-        "status": "blocked",
-        "evidenceUrl": ""
-      }
-    ]
+    "githubCiGreen": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "frontendDeployed": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "frontendSmokeVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "approvedPublicContent": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "mobileManualReview": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "securityReview": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "rollbackPlanTested": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "apiDeployed": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "apiHealthVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "dedicatedNeon": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "migrationsApplied": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "leastPrivilegeVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "databaseReadinessVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "adminIdentityVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "privacyAndRetentionApproved": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "cleanupJobVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "inquiryEndToEndVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "resendSenderVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "notificationWorkerVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "emailDeliveryVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    },
+    "seoCanonicalVerified": {
+      "status": "blocked",
+      "evidenceUrl": ""
+    }
   }
 }

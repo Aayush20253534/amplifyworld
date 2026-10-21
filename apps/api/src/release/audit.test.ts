@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateRelease, gateNames, parseReleaseEvidence } from "./audit.js";
@@ -46,4 +47,19 @@ test("unknown checks and inconsistent object shape fail closed",()=>{
  delete (obj.gates as Record<string,unknown>).someUnknownGate;
  obj.schemaVersion=3;
  assert.throws(()=>parseReleaseEvidence(obj),/invalid version/);
+});
+
+test("checked-in release template includes every named gate, and every gate is blocked", () => {
+  const templateUrl = new URL("../../../../docs/RELEASE_EVIDENCE_TEMPLATE.json", import.meta.url);
+  const raw: unknown = JSON.parse(readFileSync(templateUrl, "utf8"));
+  const evidence = parseReleaseEvidence(raw);
+  assert.equal(evidence.sourceCommit, "");
+  assert.deepEqual(Object.keys(evidence.gates).sort(), [...gateNames].sort());
+  for (const name of gateNames) {
+    assert.equal(evidence.gates[name].status, "blocked", name);
+    assert.equal(evidence.gates[name].evidenceUrl, "", name);
+  }
+  for (const profile of ["preview", "public-site", "full-production"] as const) {
+    assert.equal(evaluateRelease(evidence, profile).eligibleForHumanSignoff, false);
+  }
 });

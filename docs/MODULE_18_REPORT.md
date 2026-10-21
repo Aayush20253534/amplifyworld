@@ -26,7 +26,7 @@ Potential unresolved product distinctions:
 ## Actual live state checked
 
 - Neon: new free AmplifyWorld PostgreSQL 17 project \`lingering-pond-17105101\`, default branch \`main\`, database \`amplifyworld\`. **Zero application tables** in read-only schema inspection on 21 October 2026. No production migrations applied.
-- Vercel: \`ayush-jha-nits-projects\` is not accessible to either connected account (403). No legitimate AmplifyWorld deployment URL available.
+- Vercel: production Next.js deployment `dpl_8mh98Sjazachju8MD2hJiEtNwadK` is READY at https://web-qtkhfzvl0-ayush-jha-nits-projects.vercel.app/ (commit `e90f205`). Team-scoped settings/runtime-log API access still returns 403; external public smoke checks could not verify page responses.
 - Render: the user rejected \`amplify's workspace\`. Correct workspace is not available. No API deployment.
 - Resend: no approved verified sender/domain/recipient; no delivery.
 - Real domain: none requested. Use free provider domains when resources are authorized.

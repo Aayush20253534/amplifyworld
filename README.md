@@ -6,7 +6,7 @@ AmplifyWorld helps businesses grow through strategic marketing, technology, bran
 
 > **Development status:** **Modules 0–16 merged and CI-verified**: public experience, database, public APIs, secure inquiry receipts and the opt-in Resend notification/anti-abuse workflow. **All Modules 0–18 have merged repository deliverables and CI-verified implementation. Module 17's actual production deployment and Module 18's production acceptance are NOT complete due to hosting authorization, unapplied Neon migrations and pending operational approvals.** The dedicated Neon project exists but is not migrated or connected to a live API; no verified Resend sender or production message delivery is claimed.
 
-Modules 11–13 passed PostgreSQL integration, application checks and browser regressions. The [database guide](docs/DATABASE.md) covers the operator-controlled Neon bootstrap. **A dedicated free-tier AmplifyWorld Neon PostgreSQL project exists (project `lingering-pond-17105101`), but its application migrations have not been applied, and no live frontend or API has been deployed.**
+Modules 11–13 passed PostgreSQL integration, application checks and browser regressions. The [database guide](docs/DATABASE.md) covers Neon bootstrap. **A dedicated AmplifyWorld Neon project exists (`lingering-pond-17105101`) but remains unmigrated. A production Vercel frontend deployment is READY at https://web-qtkhfzvl0-ayush-jha-nits-projects.vercel.app/ for commit `e90f20512739cc7e0e30c0ef7831effbd5fd052e`; external page smoke tests and project-level access are not yet verified. No Render API deployment is confirmed.**
 
 ## Approved experience
 
