@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: { default: "AmplifyWorld | Business Growth", template: "%s | AmplifyWorld" },
   description: "AmplifyWorld helps businesses grow with marketing, SEO, GEO, custom websites and AI-powered solutions.",
   metadataBase: origin ?? undefined,
+  icons: {
+    icon: [{ url: "/design/brand/logo-emblem.webp", type: "image/webp" }],
+    shortcut: "/design/brand/logo-emblem.webp",
+    apple: "/design/brand/logo-emblem.webp"
+  },
   robots: { index: Boolean(origin), follow: Boolean(origin) },
   ...(origin ? {
     openGraph: {
