@@ -18,6 +18,10 @@ export function createApp(options: Parameters<typeof createPublicRouter>[0] = {}
   app.use(cors({ origin: allowedOrigins, methods: ["GET", "POST", "PATCH", "OPTIONS"] }));
   app.use(express.json({ limit: "20kb", strict: true }));
 
+  app.get("/", (_request, response) => {
+    response.status(200).json({ service: "amplifyworld-api", status: "ok", message: "AmplifyWorld API is running" });
+  });
+
   app.get("/health", (_request, response) => {
     const payload: HealthResponse = { service: "amplifyworld-api", status: "ok" };
     response.status(200).json(payload);
