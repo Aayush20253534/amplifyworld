@@ -1573,3 +1573,5 @@ body:has(.blog-page) .footer-invitation{display:none}
   .footer-bottom-left { gap: 12px 16px; }
   .footer-legal { flex-wrap: wrap; }
 }
+
+/* Deployment retry marker: production frontend change detection. */
