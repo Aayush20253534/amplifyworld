@@ -1,11 +1,15 @@
 /**
- * Search indexing is opt-in after the operator has verified the production domain.
- * Preview, staging and unknown deployments intentionally do not expose canonical URLs.
+ * Use the official AmplifyWorld domain on production so the sitemap and
+ * canonical metadata never silently disappear when optional env vars are absent.
+ * Preview and development deployments remain nonindexable.
  */
 export function siteOrigin(env: Partial<NodeJS.ProcessEnv> = process.env): URL | null {
-  if (env.SITE_INDEXING_ENABLED !== "true" || env.VERCEL_ENV === "preview" ||
-      env.VERCEL_ENV === "development") return null;
-  const raw = env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (env.VERCEL_ENV === "preview" || env.VERCEL_ENV === "development" ||
+      env.SITE_INDEXING_ENABLED === "false") return null;
+  // Render the official canonical URLs in production even when the optional
+  // indexing flag and URL variable have not been configured in Vercel.
+  const raw = env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    (env.VERCEL_ENV === "production" ? "https://amplifyworld.in" : "");
   if (!raw || raw.length > 300) return null;
   try {
     const url = new URL(raw);
