@@ -88,23 +88,24 @@ export function SiteFooter() {
               <li>Brand Development</li>
             </ul>
           </div>
-          <nav className="footer-social" aria-label="Social media">
-            <h2>Stay Connected</h2>
-            {socialLinks.map((social) => (
-              social.href ? (
-                <a key={social.name} href={social.href} target="_blank" rel="noreferrer" aria-label={`${social.name}: ${social.handle} (opens in a new tab)`}>
-                  {social.icon}
-                </a>
-              ) : (
-                <span key={social.name} className="footer-social-pending" role="img" aria-label={`${social.name} profile coming soon`} title={`${social.name} profile coming soon`}>
-                  {social.icon}
-                </span>
-              )
-            ))}
-          </nav>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} AmplifyWorld. All rights reserved.</span>
+          <div className="footer-bottom-left">
+            <span>© {new Date().getFullYear()} AmplifyWorld. All rights reserved.</span>
+            <nav className="footer-social" aria-label="Social media">
+              {socialLinks.map((social) => (
+                social.href ? (
+                  <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" title={social.name} aria-label={`${social.name}: ${social.handle} (opens in a new tab)`}>
+                    {social.icon}
+                  </a>
+                ) : (
+                  <span key={social.name} className="footer-social-pending" role="img" aria-label={`${social.name} profile coming soon`} title={`${social.name} profile coming soon`}>
+                    {social.icon}
+                  </span>
+                )
+              ))}
+            </nav>
+          </div>
           <div className="footer-legal">
             <span>Privacy Policy</span>
             <span aria-hidden="true">|</span>
