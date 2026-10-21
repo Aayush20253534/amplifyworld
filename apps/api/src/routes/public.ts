@@ -2,6 +2,7 @@ import { createHash, createHmac } from "node:crypto";
 import { Router } from "express";
 import type { Request, Response } from "express";
 import { validateInquiryPayload } from "@amplifyworld/shared/inquiry";
+import { SERVICES } from "@amplifyworld/shared";
 import { prismaPublicRepository } from "./repository.js";
 import type { Listing, PublicRepository } from "./repository.js";
 
@@ -152,7 +153,30 @@ export function createPublicRouter(options: ApiOptions = {}) {
       const apiKey = process.env.RESEND_API_KEY!;
       const from = process.env.RESEND_FROM_EMAIL!;
       const to = process.env.INQUIRY_NOTIFY_EMAIL!;
-      const serviceLabel = service.replace(/[^a-zA-Z0-9 -]/g, "").slice(0, 100);
+      const serviceLabel = SERVICES.find(item => item.id === service)?.title ?? "Not sure yet";
+      const escapeHtml = (value: string) => value.replace(/[&<>"']/g, char =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char] ?? char);
+      const field = (label: string, value: string) =>
+        '<tr><td style="padding:12px 16px;border-bottom:1px solid #e9eaf0;color:#64748b;font-size:13px;width:145px;vertical-align:top">' +
+        escapeHtml(label) + '</td><td style="padding:12px 16px;border-bottom:1px solid #e9eaf0;color:#111827;font-size:14px;font-weight:600;overflow-wrap:anywhere">' +
+        escapeHtml(value || "Not provided") + '</td></tr>';
+      const html = [
+        '<!doctype html><html><body style="margin:0;padding:32px 12px;background:#f4f5fa;font-family:Arial,Helvetica,sans-serif;color:#111827">',
+        '<div style="max-width:640px;margin:auto;background:#ffffff;border:1px solid #e8eaf2;border-radius:16px;overflow:hidden">',
+        '<div style="background:#171329;padding:28px 30px"><p style="color:#c5b4fa;letter-spacing:2px;font-size:11px;font-weight:bold;margin:0 0 10px">AMPLIFYWORLD · CONTACT</p>',
+        '<h1 style="color:#ffffff;font-size:25px;line-height:1.25;margin:0">New business inquiry</h1>',
+        '<p style="color:#cbd5e1;font-size:13px;margin:12px 0 0">A visitor has contacted you through your website.</p></div>',
+        '<div style="padding:24px 24px 8px"><h2 style="font-size:15px;margin:0 0 14px;color:#4c1d95">Contact details</h2>',
+        '<table role="presentation" style="border-collapse:collapse;width:100%">',
+        field("Full name", name), field("Email", email), field("Phone", phone),
+        field("Company", company), field("Service", serviceLabel), '</table>',
+        '<h2 style="font-size:15px;margin:26px 0 12px;color:#4c1d95">Project details</h2>',
+        '<div style="background:#f8f7fc;border:1px solid #ede9f7;border-radius:10px;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;font-size:14px">',
+        escapeHtml(message), '</div>',
+        '<p style="font-size:12px;line-height:1.6;color:#64748b;margin:24px 0">Reply to this email to respond directly to the sender.</p></div>',
+        '<div style="padding:16px 30px;background:#f8f7fc;color:#64748b;font-size:12px;text-align:center">AmplifyWorld · Website contact notification</div>',
+        '</div></body></html>'
+      ].join("");
       try {
         const response = await fetch("https://api.resend.com/emails", {
           method: "POST",
@@ -164,12 +188,13 @@ export function createPublicRouter(options: ApiOptions = {}) {
           body: JSON.stringify({
             from, to: [to], reply_to: email,
             subject: "New AmplifyWorld contact inquiry",
+            html,
             text: [
               "New website inquiry", "Name: " + name, "Email: " + email,
               "Phone: " + (phone || "Not provided"),
               "Company: " + (company || "Not provided"),
               "Service: " + serviceLabel, "", "Message:", message
-            ].join("\\n")
+            ].join("\n")
           }),
           signal: AbortSignal.timeout(12000)
         });
