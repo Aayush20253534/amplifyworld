@@ -1526,3 +1526,50 @@ body:has(.blog-page) .footer-invitation{display:none}
 }
 
 /* Deployment verification: footer stylesheet is included in the frontend build. */
+
+
+/* Footer refinement: balanced three-column layout and compact social row. */
+.footer-grid {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, .85fr) minmax(0, 1.25fr);
+  gap: clamp(32px, 4vw, 72px);
+  padding-block: 20px 44px;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 390px;
+}
+.footer-brand-logo { width: min(100%, 240px); }
+.footer-logo { width: 100%; max-width: 240px; }
+.footer-brand p { max-width: 350px; line-height: 1.75; }
+.footer-navigation, .footer-services {
+  border-right: 0;
+  padding-right: 0;
+  min-height: 0;
+}
+.footer-grid h2 { font-size: 15px; margin-bottom: 20px; }
+.footer-link-columns, .footer-services ul { gap: 10px 22px; }
+.footer-navigation a, .footer-services li { line-height: 1.6; }
+.footer-bottom { align-items: center; gap: 24px; }
+.footer-bottom-left { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; }
+.footer-bottom .footer-social { display: flex; flex-direction: row; align-items: center; flex-wrap: nowrap; gap: 10px; padding: 0; }
+.footer-bottom .footer-social a, .footer-bottom .footer-social-pending {
+  display: grid; place-items: center; width: 32px; height: 32px;
+  border: 1px solid #3d2b50; border-radius: 50%; transition: border-color .2s, background .2s;
+}
+.footer-bottom .footer-social a:hover { background: #301544; border-color: #a342e8; }
+.footer-bottom .footer-social svg { width: 16px; height: 16px; }
+.footer-legal { flex-shrink: 0; }
+@media (min-width: 640px) and (max-width: 1249px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; max-width: 500px; }
+}
+@media (max-width: 639px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; padding-block: 12px 32px; }
+  .footer-brand { gap: 12px; }
+  .footer-link-columns, .footer-services ul { gap: 8px 20px; }
+  .footer-bottom { align-items: flex-start; }
+  .footer-bottom-left { gap: 12px 16px; }
+  .footer-legal { flex-wrap: wrap; }
+}
