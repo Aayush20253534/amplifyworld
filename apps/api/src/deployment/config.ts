@@ -38,8 +38,9 @@ function validEmail(input: string | undefined): boolean {
 
 export function deploymentIssues(env: Environment, mode: DeployMode = "api"): string[] {
   const issues: string[] = [];
-  const needsDb = mode !== "api" || env.INQUIRY_COLLECTION_ENABLED === "true" ||
-    env.INQUIRY_EMAIL_ENABLED === "true";
+  const direct = mode === "api" && env.CONTACT_EMAIL_DIRECT_ENABLED === "true";
+  const needsDb = mode !== "api" || (!direct && (env.INQUIRY_COLLECTION_ENABLED === "true" ||
+    env.INQUIRY_EMAIL_ENABLED === "true"));
   const enabledCollection = env.INQUIRY_COLLECTION_ENABLED === "true";
   const enabledEmail = env.INQUIRY_EMAIL_ENABLED === "true";
   const originList = (env.CLIENT_ORIGIN ?? "").split(",").map(x => x.trim()).filter(Boolean);
@@ -57,7 +58,7 @@ export function deploymentIssues(env: Environment, mode: DeployMode = "api"): st
   if (needsDb && (!Number.isInteger(proxyHops) || proxyHops < 1 || proxyHops > 2)) {
     issues.push("TRUST_PROXY_HOPS");
   }
-  if (enabledCollection || mode !== "api") {
+  if ((!direct && enabledCollection) || mode !== "api") {
     const days = Number(env.INQUIRY_RETENTION_DAYS);
     if (env.INQUIRY_PRIVACY_POLICY_APPROVED !== "true") issues.push("INQUIRY_PRIVACY_POLICY_APPROVED");
     if (!Number.isInteger(days) || days < 1 || days > 365) issues.push("INQUIRY_RETENTION_DAYS");
@@ -68,7 +69,12 @@ export function deploymentIssues(env: Environment, mode: DeployMode = "api"): st
       issues.push("INQUIRY_RETENTION_CLEANUP_ENABLED");
     }
   }
-  if (enabledEmail || mode === "worker") {
+  if (direct) {
+    if (!env.RESEND_API_KEY?.startsWith("re_") || env.RESEND_API_KEY.length < 12) issues.push("RESEND_API_KEY");
+    if (!validEmail(env.RESEND_FROM_EMAIL)) issues.push("RESEND_FROM_EMAIL");
+    if (!validEmail(env.INQUIRY_NOTIFY_EMAIL)) issues.push("INQUIRY_NOTIFY_EMAIL");
+  }
+  if ((!direct && enabledEmail) || mode === "worker") {
     if (!enabledCollection) issues.push("INQUIRY_COLLECTION_ENABLED");
     if (!env.RESEND_API_KEY?.startsWith("re_") || env.RESEND_API_KEY.length < 12) issues.push("RESEND_API_KEY");
     if (!validEmail(env.RESEND_FROM_EMAIL)) issues.push("RESEND_FROM_EMAIL");
