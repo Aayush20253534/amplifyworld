@@ -170,7 +170,7 @@ export function PortfolioGallery() {
       {activeProject ? (
         <div className="portfolio-browser-layout">
           <div className="portfolio-selected-copy">
-            <span className="portfolio-concept-tag"{activeProject.status}</span>
+            <span className="portfolio-concept-tag">{activeProject.status}</span>
             <p className="portfolio-selected-category">{activeProject.category}</p>
             <h3>{activeProject.title}</h3>
             <p>{activeProject.summary}</p>
@@ -217,7 +217,7 @@ export function PortfolioGallery() {
                       <ProjectArtwork project={project} sizes="(max-width: 639px) 84vw, 60vw" />
                     </div>
                     <div className="portfolio-stage-caption">
-                      <span{project.status}</span>
+                      <span>{project.status}</span>
                       <strong>{project.title}</strong>
                     </div>
                   </div>
@@ -319,7 +319,7 @@ export function PortfolioGallery() {
               <ProjectArtwork project={selectedDetail} sizes="(max-width: 850px) 90vw, 600px" />
             </div>
             <div className="portfolio-dialog-body">
-              <span className="portfolio-concept-tag"{selectedDetail.status}</span>
+              <span className="portfolio-concept-tag">{selectedDetail.status}</span>
               <p className="portfolio-selected-category">{selectedDetail.category}</p>
               <h2 id="portfolio-detail-title">{selectedDetail.title}</h2>
               <p id="portfolio-detail-desc">{selectedDetail.objective}</p>
