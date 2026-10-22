@@ -18,7 +18,7 @@ const jakarta = localFont({
 const origin = siteOrigin();
 export const metadata: Metadata = {
   title: { default: "AmplifyWorld | Business Growth", template: "%s | AmplifyWorld" },
-  description: "AmplifyWorld helps businesses grow with marketing, SEO, GEO, custom websites and AI-powered solutions.",
+  description: "AmplifyWorld is a digital marketing agency in Prayagraj offering SEO, local SEO, Google Business Profile optimization, Meta Ads, custom websites, GEO, AEO and AI solutions for businesses in India and beyond.",
   metadataBase: origin ?? undefined,
   icons: {
     icon: [{ url: "/design/brand/logo-emblem.webp", type: "image/webp" }],

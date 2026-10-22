@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: ["/", "/about", "/contact"],
+      allow: ["/", "/about", "/services", "/prayagraj", "/contact"],
       // Unreviewed samples and authenticated paths must not be indexed.
       disallow: ["/admin", "/blog", "/portfolio", "/api"]
     },
