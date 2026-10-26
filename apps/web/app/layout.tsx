@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   description: "AmplifyWorld is a digital marketing agency in Prayagraj offering SEO, local SEO, Google Business Profile optimization, Meta Ads, custom websites, GEO, AEO and AI solutions for businesses in India and beyond.",
   metadataBase: origin ?? undefined,
   icons: {
-    icon: [{ url: "/design/brand/logo-emblem.webp", type: "image/webp" }],
-    shortcut: "/design/brand/logo-emblem.webp",
-    apple: "/design/brand/logo-emblem.webp"
+    icon: [{ url: "/design/brand/favicon.png", type: "image/png" }],
+    shortcut: "/design/brand/favicon.png",
+    apple: "/design/brand/favicon.png"
   },
   robots: { index: Boolean(origin), follow: Boolean(origin) },
   ...(origin ? {
